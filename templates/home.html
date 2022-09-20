@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+  <link href="static/css/desk.css" rel="stylesheet">
+  <title>Ec</title>
+
+  
+<style>
+
+  body{
+
+    background-color: #ffffff;
+  }
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Consolas", monospace;
+}
+:root {
+  --bgcolor-dark: #1b1818;
+  --text-clr-dark: #fff;
+  --icon-clor: #18d1d1;
+}
+header {
+  width: 100%;
+  height: 100vh;
+  background: var(--bgcolor-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row-reverse;
+}
+.icon-container {
+  color: var(--icon-clor);
+  font-size: 200px;
+}
+.text-container {
+  color: var(--text-clr-dark);
+  text-align: center;
+}
+.text-container h2 {
+  font-size: 60px;
+}
+.text-container p {
+  max-width: 500px;
+}
+.text-container span {
+  color: var(--icon-clor);
+}
+.btn-container {
+  margin-top: 20px;
+}
+.btn {
+  color: var(--bgcolor-dark);
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: none;
+  background: var(--icon-clor);
+  border-radius: 10px;
+  font-weight: 530;
+  font-size: 15px;
+  cursor: pointer;
+}
+.btn:hover {
+  opacity: 0.7;
+}
+.btn:active {
+  opacity: 0.5;
+}
+@media only screen and (max-width: 800px) {
+  .container {
+    flex-direction: column;
+  }
+  .text-container h2 {
+    font-size: 50px;
+  }
+}
+@media only screen and (prefers-color-scheme: light) {
+  :root {
+    --bgcolor-dark: #f3eaea;
+    --text-clr-dark: #111;
+    --icon-clor: #0099ff;
+  }
+}
+
+
+
+
+.button {
+  width: 100px;
+  height: 35px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  }
+
+    
+.searchfilter {
+  width: 200px;
+  height: 35px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  padding-left: 30px;
+  font-weight: 500;
+  color: rgb(68, 68, 68);
+  background-color: #0000000e;
+  border: 1px solid;
+  border-color: #30303000;
+  border-radius: 45px;
+
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  }
+
+  .monthfilter {
+  width: 120px;
+  height: 35px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  padding-left: 30px;
+  font-weight: 500;
+  color: rgb(68, 68, 68);
+  background-color: #0000000e;
+  border: 1px solid;
+  border-color: #30303000;
+  border-radius: 45px;
+  line-height: 5;
+
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  }
+
+
+      .srchbtn{
+        background-color: #e0e0e0;
+        border: none;
+        border-radius: 20px 50px 50px 20px; 
+        padding: 10px;
+        margin-right:1rem ;
+      }
+  
+
+  .monthfilter:hover {
+
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+
+  -ms-transform: scale(1.1); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari 3-8 */
+  transform: scale(1.1); 
+  transition: transform 0.5s;
+  
+}
+
+.searchfilter:hover {
+
+box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+
+-ms-transform: scale(1.1); /* IE 9 */
+-webkit-transform: scale(1.1); /* Safari 3-8 */
+transform: scale(1.1); 
+transition: transform 0.5s;
+
+}
+
+.optionn
+{
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 350;
+   line-height: 5;
+  color: rgb(0, 0, 0);
+
+}
+  
+.buttonfilter {
+ 
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 35px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: rgb(68, 68, 68);
+  background-color: #0000000e;
+  border: 1px solid;
+  border-color: #9b9b9b00;
+  border-radius: 10px;
+
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  }
+
+  .buttonfilter:hover {
+  background-color: #000000;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.26);
+  color: #fff;
+  /* transform: translateY(-7px); */
+
+  -ms-transform: scale(1.1); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari 3-8 */
+  transform: scale(1.1); 
+  transition: transform 0.5s;
+  
+}
+
+.button:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+
+  #blue{
+    /* background-color: #18d1d1;f2f2f2 */
+    background-color: #f2f2f2;
+  }
+  #green{
+    /* background-color: rgb(88, 214, 4); */
+    background-color: #f2f2f2;
+  }
+  
+  #pink{
+    /* background-color: rgb(208, 171, 2); */
+    background-color: #f2f2f2;
+  }
+  
+  #red{
+    /* background-color: rgb(215, 0, 83); */
+    background-color: #f2f2f2;
+  }
+  
+  #pink{
+    /* background-color: rgb(243, 36, 115); */
+    background-color: #f2f2f2;
+  }
+  
+  #purple{
+    /* background-color: rgb(141, 8, 230); */
+    background-color: #f2f2f2;
+  }
+  
+  #orange{
+  background: linear-gradient(138deg, rgb(240, 141, 2) 0%, rgba(219,5,69,1) 100%);
+  }
+  
+
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+ 
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+
+  </style>
+
+  
+</head>
+<body>
+
+
+  
+
+  
+
+  <ul>
+    <li  class="eclogo"><div > <img src="static/images/logo.svg" width="50px"></div></li>
+    <li style="float:right;"><a href="{{ url_for('loginpage') }}" ><button  class="btn" style="background-color: #ffffff; color: rgb(0, 0, 0);">Login</button></button></a></li>
+  </ul>
+    <style>
+      .eclogo{
+        margin: 1rem;
+      }
+    </style>
+
+
+
+  <div class="container" >
+    <div class="text-container">
+      <img src="static/images/logoimage.svg" width="500px">
+      <!-- <h2>Events <span>Connect</span></h2><br> -->
+      <p>
+        <!-- <span>one </span> place <span>
+          <br><br>
+           -->
+
+      <div class="btn-container">
+      
+      </div>
+    </div>
+    
+    <style>
+      .search{
+        background-color: #00000000;
+      }
+    </style>
+
+    
+  </div>
+    <div style="margin-left: 310px; display: flex;">
+
+
+      <button onClick="window.location.reload();" class="buttonfilter"><i class="fa fa-refresh" aria-hidden="true" ></i>&nbsp;&nbsp;Refresh</button>&nbsp;&nbsp;
+      
+
+
+          <div>
+            <form action="/month" method="post" class="">
+
+            
+
+              <select name="month" class="monthfilter">
+                <option class="optionn">MONTH</option>
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+              </select>
+              
+              <button type="submit" class="srchbtn"><i class="fa fa-search" aria-hidden="true" ></i></button>
+            </form>
+          </div>
+
+         <div>
+          <form action="/search" method="post" class="searchbox">
+
+           
+
+            <select name="search" class="searchfilter" >
+              <option >SELECT CLUB</option>
+              {% for item in clubdata %}
+              <option value="{{item.name}}" class="optionn">{{item.name}}</option>
+              {% endfor %}
+            </select>
+            
+            <button type="submit" class="srchbtn"><i class="fa fa-search" aria-hidden="true" ></i></button>
+          </form>
+        </div>
+
+        <div>
+          <a href="{{ url_for('approved') }}"> <button class="buttonfilter">Approved</button></a>&nbsp;&nbsp;&nbsp;<a href="{{ url_for('pending') }}"><button class="buttonfilter">Pending</button></a>&nbsp;&nbsp;&nbsp;<a href="{{ url_for('login') }}"><button class="buttonfilter">All</button></a>
+
+        </div>
+        
+    </div>
+    <br><br><br><br><br><br>
+
+
+  
+
+
+
+
+  <table style="width:70%; margin: auto;" >
+    {% for row in all %}
+    <tr>
+       <td>
+
+          <div class="eventWrapper">
+             <div class="event" id="{{row.color}}">
+                <div class="event--date"><span></span>{{row.monthword}}  {{row.year}}<span style="background-color:rgba(0, 0, 255, 0)255, 255, 255); font-weight: 700; padding-top: 20px;">{{row.day}}</span><span></span>{{row.time}}<span class="venue">{{row.venue}}</span></div>
+                <div class="event--content">
+
+                  <div class="headerr">
+                    <p class="club" id="{{row.club}}">{{row.club}}</p>&nbsp;&nbsp;
+                    <p class="status" id="{{row.status}}">{{row.status}}</p>
+                      <!-- <p class="status"><IMG src="static/images/{{row.status}}white.svg" style="height:20px; margin-right: 10px;">{{row.status}}</p> -->
+                      <!-- <p class="event--content-ensemble"><IMG src="static/images/{{row.club}}.svg" style="height:25px; margin-right: 10px;">{{row.club}}</p> -->
+
+                  </div >
+
+                  <style>
+                    .headerr{
+         
+                      display: flex;
+                      margin-top: auto;
+                      margin-bottom: 1rem;
+                    }
+
+                    .venue{
+                      font-family: Poppins;
+                    }
+
+                    .club
+                    {
+                        border-radius: 20px;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                        font-weight: 500;
+                        color: #000000;
+                        padding-top: 3px;
+                        padding-bottom: 3px;
+                        
+                    }
+
+                    #ieeesbgeci
+                    {
+                      background-color: #18d1d1;
+                      /* background-color: #f2f2f2; */
+                    }
+                      #fossgeci{
+                      background-color: #d18118;
+                      /* background-color: #f2f2f2; */
+                  
+                    }
+
+                    #approved
+                    {
+                      background-color: #41cf00;
+                      /* background-color: #f2f2f2; */
+                      
+                    }
+
+                    #rejected
+                    {
+                      background-color: #b30101;
+                      /* background-color: #f2f2f2; */
+                      
+                    }
+                      #pending{
+                      background-color: #e9ab00;
+                      /* background-color: #f2f2f2; */
+                
+                  
+                    }
+
+                    .status{
+                        border-radius: 20px;
+                        padding-left: 10px;
+                        padding-right: 10px;
+               
+                        font-weight: 500;
+                        color: #ffffff;
+                        padding-top: 3px;
+                        padding-bottom: 3px;
+                 
+                    }
+                  </style>
+                  
+                   <h1 class="event-title">{{row.name}}</h1>
+                   <p class="event-desc">Campus Events Scheduling and Management web application is a utility
+                    aimed at the clubs and communities </p>
+                   <style>
+
+                    .event-title{
+                      font-size: 35px;
+                      font-family:Poppins;
+                      font-weight: 350;
+                    
+                    }
+
+                    .event-desc{
+                      width: 70%;
+                      font-size: 15px;
+                      font-family:Poppins;
+                      font-weight: 300;
+                    
+                    }
+
+                      #banner{
+                      background-color: rgb(102, 235, 14);
+                      color: rgb(255, 255, 255);
+                      font-weight: 800;
+                      }
+                   </style>
+                </div>
+                
+             </div>
+          </div>
+          
+       </td>
+  
+    </tr>
+    {% endfor %}
+ </table>
+
+
+</header>
+
+
+</body>
+</html>

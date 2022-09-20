@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>{{session.name}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link href="static/css/desk2.css" rel="stylesheet">
+
+</head>
+<body>
+
+
+  
+<!-- partial:index.partial.html -->
+<div class="main">
+  <div class="left">
+    <ul>
+      <li class="menu-heading">Dashboard</li>
+      <li class="active"><a data-toggle="tab" href="#projects"><i class="fa fa-table fa-lg"></i> Added events</a></li>
+      <li><a data-toggle="tab" href="#single-invoice"><i class="fa fa-file-text-o fa-lg"></i>Review</a></li>
+   
+    </ul>
+  </div>
+  <div class="right"> 
+    <div class="tab-content">
+     
+      <!-- Landing -->
+
+
+      <div id="landing" class="tab-pane fade">
+        
+
+
+
+        <div class="header">
+          <h4>{{session.name}}</h4>
+
+            <ul class="pull-right">
+              <li>
+                <div class="btn-group dropleft dropdown-user">
+             
+                    <i class="fa fa-user dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2.2rem;">
+                      <!-- <span class="material-icons">notifi</span> -->
+                      <span class="icon-button__badge">{{countp}}</span>
+                    </i>
+      
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in dataapproved %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-check-circle fa-2x"></i>
+                          <p class="pull-right">
+                            {{row.2}}<br>
+                            <small>{{row.12}}</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="btn-group dropleft dropdown-alert">
+                  <i class="fa fa-bell dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2rem;">
+                    <!-- <span class="material-icons">notifi</span> -->
+                    <span class="icon-button__badge">{{rcount}}</span>
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in datarequest %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <!-- <i class="fa fa-check-circle fa-2x"></i> -->
+                          <p class="pull-righ">
+                            {{row.0}}<br>{{row.2}} {{row.3}}
+                            <small>{{row.4}} Requested cancellation </small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="btn-group dropleft dropdown-avatar">
+                  <img src="static/images/{{session.name}}b.svg" class="img-circle img-responvie" width="30px"/><i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <ul class="dropdown-menu"> 
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">View Activity</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+<style>
+ #blue{
+    /* background-color: #18d1d1;f2f2f2 */
+    background-color: #f2f2f2;
+  }
+  #green{
+    /* background-color: rgb(88, 214, 4); */
+    background-color: #f2f2f2;
+  }
+  
+  #pink{
+    /* background-color: rgb(208, 171, 2); */
+    background-color: #f2f2f2;
+  }
+  
+  #red{
+    /* background-color: rgb(215, 0, 83); */
+    background-color: #f2f2f2;
+  }
+  
+  #pink{
+    /* background-color: rgb(243, 36, 115); */
+    background-color: #f2f2f2;
+  }
+  
+  #purple{
+    /* background-color: rgb(141, 8, 230); */
+    background-color: #f2f2f2;
+  }
+  
+  #orange{
+  background: linear-gradient(138deg, rgb(240, 141, 2) 0%, rgba(219,5,69,1) 100%);
+  }
+  
+
+  
+  
+</style>
+
+
+
+
+
+
+        <div class="content">
+          <h3 class="text-center">
+            Hi there! Welcome back to the Dashboard. <br>
+            dsfsdf
+            <div>
+              <li><a href="{{ url_for('add') }}" target="_blank">add</a></li>
+            </div>
+         </h3>
+      </div>
+      </div>
+      <!-- Projects -->
+
+      <div id="projects" class="tab-pane fade in active">
+        
+
+        <div class="header">
+          <h4>{{session.name}}</h4>
+
+            <ul class="pull-right">
+              <li>
+                <div class="btn-group dropleft dropdown-user">
+             
+                    <i class="fa fa-user dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2.2rem;">
+                      <!-- <span class="material-icons">notifi</span> -->
+                      <span class="icon-button__badge">{{countp}}</span>
+                    </i>
+      
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in dataapproved %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-check-circle fa-2x"></i>
+                          <p class="pull-right">
+                            {{row.2}}<br>
+                            <small>{{row.12}}</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="btn-group dropleft dropdown-alert">
+                  <i class="fa fa-bell dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2rem;">
+                    <!-- <span class="material-icons">notifi</span> -->
+                    <span class="icon-button__badge">{{rcount}}</span>
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in datarequest %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <!-- <i class="fa fa-check-circle fa-2x"></i> -->
+                          <p class="pull-righ">
+                            {{row.0}}<br>{{row.2}} {{row.3}}
+                            <small>{{row.4}} Requested cancellation </small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="btn-group dropleft dropdown-avatar">
+                  <img src="static/images/{{session.name}}b.svg" class="img-circle img-responvie" width="30px"/><i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <ul class="dropdown-menu"> 
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">View Activity</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        <div class="content">
+          <div class="row">
+            <div class="col-sm-3 " >
+              <div class="card-3">
+                <h3><small>Rejected events</small>
+                <span class="pull-right"><i class="fa fa-arrow-circle-o-up fa-2x"></i></span>
+                  <br>{{curcount}}
+                </h3>
+
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="card-3">
+                <h3><small>Approval pending</small>
+                <span class="pull-right"><i class="fa fa-arrow-circle-o-up fa-2x"></i></span>
+                  <br>{{countp}}
+                </h3>
+      
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="card-3">
+                <h3><small>Approved</small>
+                <span class="pull-right"><i class="fa fa-arrow-circle-o-down fa-2x"></i></span>
+                  <br>{{counta}}
+
+                </h3>
+      
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="card-3">
+                <h3><small>Cancellation Requests</small>
+                <span class="pull-right"><i class="fa fa-arrow-circle-o-down fa-2x"></i></span>
+                  <br>{{rcount}}
+                </h3>
+
+              </div>
+            </div>
+          </div>
+          <div class="">
+            <div class="responsi">
+              <button onClick="window.location.reload();" class="buttonfilter"><i class="fa fa-refresh" aria-hidden="true" ></i>&nbsp;&nbsp;Refresh</button>&nbsp;&nbsp;<button  class="buttonfilter">&nbsp;&nbsp;Total events - {{countr}}</button>
+
+              <style>
+                .buttonfilter {
+                  
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  height: 35px;
+                  margin-top: 2rem;
+                  margin-bottom: 2rem;
+                  font-family: 'Roboto', sans-serif;
+                  font-size: 11px;
+                  text-transform: uppercase;
+                  letter-spacing: 2px;
+                  font-weight: 500;
+                  color: rgb(68, 68, 68);
+                  background-color: #0000000e;
+                  border: 1px solid;
+                  border-color: #9b9b9b00;
+                  border-radius: 10px;
+
+                  transition: all 0.3s ease 0s;
+                  cursor: pointer;
+                  outline: none;
+                  }
+
+                  .buttonfilter:hover {
+                  background-color: #000000;
+                  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.26);
+                  color: #fff;
+                  /* transform: translateY(-7px); */
+
+                  -ms-transform: scale(1.1); /* IE 9 */
+                  -webkit-transform: scale(1.1); /* Safari 3-8 */
+                  transform: scale(1.1); 
+                  transition: transform 0.5s;
+                  
+                  }
+              </style>
+              
+              
+
+              <table style="width:100%; margin: auto;" >
+                {% for row in students %}
+                <tr>
+                   <td>
+            
+                      <div class="eventWrapper">
+                         <div class="event" id="{{row.11}}">
+                          
+                            <div class="event--content">
+            
+                              <div class="headerr">
+                                <p class="club" id="{{row.1}}">{{row.4}} {{row.7}} {{row.6}} | {{row.8}} | {{row.9}} </p>&nbsp;&nbsp;
+                                <p class="status" id="{{row.12}}">{{row.12}}</p>
+                                  <!-- <p class="status"><IMG src="static/images/{{row.status}}white.svg" style="height:20px; margin-right: 10px;">{{row.status}}</p> -->
+                                  <!-- <p class="event--content-ensemble"><IMG src="static/images/{{row.club}}.svg" style="height:25px; margin-right: 10px;">{{row.club}}</p> -->
+            
+                              </div >
+            
+                              <style>
+                                .headerr{
+                     
+                                  display: flex;
+                                  margin-top: auto;
+                                  margin-bottom: 1rem;
+                                }
+            
+                                .venue{
+                                  font-family: Poppins;
+                                }
+            
+                                .club
+                                {
+                                    border-radius: 20px;
+                                    padding-left: 10px;
+                                    padding-right: 10px;
+                                    font-weight: 500;
+                                    color: #000000;
+                                    padding-top: 3px;
+                                    padding-bottom: 3px;
+                                    
+                                }
+            
+                                #ieeesbgeci
+                                {
+                                  background-color: #ffffff;
+                                  /* background-color: #f2f2f2; */
+                                }
+                                  #fossgeci{
+                                  background-color: #d18118;
+                                  /* background-color: #f2f2f2; */
+                              
+                                }
+            
+                                #approved
+                                {
+                                  background-color: #41cf00;
+                                  /* background-color: #f2f2f2; */
+                                  
+                                }
+                                  #pending{
+                                  background-color: #fa4e3b;
+                                  /* background-color: #f2f2f2; */
+                            
+                              
+                                }
+            
+                                .status{
+                                    border-radius: 20px;
+                                    padding-left: 10px;
+                                    padding-right: 10px;
+                           
+                                    font-weight: 500;
+                                    color: #ffffff;
+                                    padding-top: 3px;
+                                    padding-bottom: 3px;
+                             
+                                }
+                              </style>
+                              
+                               <h1 class="event-title">{{row.2}}</h1>
+                            
+                               <style>
+            
+                                .event-title{
+                                  font-size: 35px;
+                                  font-family:Poppins;
+                                  font-weight: 350;
+                                
+                                }
+            
+                                .event-desc{
+                                  width: 70%;
+                                  font-size: 15px;
+                                  font-family:Poppins;
+                                  font-weight: 300;
+                                
+                                }
+            
+                                  #banner{
+                                  background-color: rgb(102, 235, 14);
+                                  color: rgb(255, 255, 255);
+                                  font-weight: 800;
+                                  }
+                               </style>
+                            </div>
+                            
+                         </div>
+                      </div>
+                      
+                   </td>
+              
+                </tr>
+                {% endfor %}
+             </table>
+            
+
+              
+      
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- Candidates -->
+      <div id="candidates" class="tab-pane fade">
+        <div class="header">
+          <h4>{{session.name}}</h4>
+
+            <ul class="pull-right">
+              <li>
+                <div class="btn-group dropleft dropdown-user">
+             
+                    <i class="fa fa-user dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2.2rem;">
+                      <!-- <span class="material-icons">notifi</span> -->
+                      <span class="icon-button__badge">{{countp}}</span>
+                    </i>
+      
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in dataapproved %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-check-circle fa-2x"></i>
+                          <p class="pull-right">
+                            {{row.2}}<br>
+                            <small>{{row.12}}</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="btn-group dropleft dropdown-alert">
+                  <i class="fa fa-bell dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2rem;">
+                    <!-- <span class="material-icons">notifi</span> -->
+                    <span class="icon-button__badge">{{rcount}}</span>
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in datarequest %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <!-- <i class="fa fa-check-circle fa-2x"></i> -->
+                          <p class="pull-righ">
+                            {{row.0}}<br>{{row.2}} {{row.3}}
+                            <small>{{row.4}} Requested cancellation </small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="btn-group dropleft dropdown-avatar">
+                  <img src="static/images/{{session.name}}b.svg" class="img-circle img-responvie" width="30px"/><i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <ul class="dropdown-menu"> 
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">View Activity</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+        <div class="content">
+          <div class="row">
+            <div class="col-sm-4 candid-card">
+              <div class="card-4">
+                <img src="https://bit.ly/2Z2Rhol" class="img-responsive main-img"/>
+                <div class="row">
+                  <div class="col-sm-10">
+                    <img src="https://bit.ly/2OWjYOV" class="img-responsive img-circle img-thumbnail pull-left">
+                    <h5>Mathilda Campbell <br><small><i class="fa fa-map-marker"></i> India</small></h5>
+                  </div>
+                  <div class="col-sm-2 text-right">
+                    <a href="#"><i class="fa fa-trash-o fa-lg"></i></a>
+                    <a href="#"><i class="fa fa-cog fa-lg"></i></a>
+                  </div>
+                </div>
+                <hr>
+                <div class="row text-center py-15">
+                  <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block"><i class="fa fa-envelope"></i> New Message</button>
+                  </div>
+                  <div class="col-sm-6 text-green">
+                    <small class="mt-5"><i class="fa fa-check"></i> Available for Hire</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 candid-card">
+              <div class="card-4">
+                <img src="https://bit.ly/2TCl1lG" class="img-responsive main-img"/>
+                <div class="row">
+                  <div class="col-sm-10">
+                    <img src="https://bit.ly/2Z9sZUH" class="img-responsive img-circle img-thumbnail pull-left">
+                    <h5>Mathilda Campbell <br><small><i class="fa fa-map-marker"></i> India</small></h5>
+                  </div>
+                  <div class="col-sm-2 text-right">
+                    <a href="#"><i class="fa fa-trash-o fa-lg"></i></a>
+                    <a href="#"><i class="fa fa-cog fa-lg"></i></a>
+                  </div>
+                </div>
+                <hr>
+                <div class="row text-center py-15">
+                  <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block"><i class="fa fa-envelope"></i> New Message</button>
+                  </div>
+                  <div class="col-sm-6 text-green">
+                    <small class="mt-5"><i class="fa fa-check"></i> Available for Hire</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 candid-card">
+              <div class="card-4">
+                <img src="https://bit.ly/2Z6stLb" class="img-responsive main-img"/>
+                <div class="row">
+                  <div class="col-sm-10">
+                    <img src="https://bit.ly/2Z4W1cd" class="img-responsive img-circle img-thumbnail pull-left">
+                    <h5>Mathilda Campbell <br><small><i class="fa fa-map-marker"></i> India</small></h5>
+                  </div>
+                  <div class="col-sm-2 text-right">
+                    <a href="#"><i class="fa fa-trash-o fa-lg"></i></a>
+                    <a href="#"><i class="fa fa-cog fa-lg"></i></a>
+                  </div>
+                </div>
+                <hr>
+                <div class="row text-center py-15">
+                  <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block"><i class="fa fa-envelope"></i> New Message</button>
+                  </div>
+                  <div class="col-sm-6 text-green">
+                    <small class="mt-5"><i class="fa fa-check"></i> Available for Hire</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4 candid-card">
+              <div class="card-4">
+                <img src="https://bit.ly/30evAhw" class="img-responsive main-img"/>
+                <div class="row">
+                  <div class="col-sm-10">
+                    <img src="https://bit.ly/2KP3DX7" class="img-responsive img-circle img-thumbnail pull-left">
+                    <h5>Mathilda Campbell <br><small><i class="fa fa-map-marker"></i> India</small></h5>
+                  </div>
+                  <div class="col-sm-2 text-right">
+                    <a href="#"><i class="fa fa-trash-o fa-lg"></i></a>
+                    <a href="#"><i class="fa fa-cog fa-lg"></i></a>
+                  </div>
+                </div>
+                <hr>
+                <div class="row text-center py-15">
+                  <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block"><i class="fa fa-envelope"></i> New Message</button>
+                  </div>
+                  <div class="col-sm-6 text-green">
+                    <small class="mt-5"><i class="fa fa-check"></i> Available for Hire</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 candid-card">
+              <div class="card-4">
+                <img src="https://bit.ly/2KQ3se3" class="img-responsive main-img"/>
+                <div class="row">
+                  <div class="col-sm-10">
+                    <img src="https://bit.ly/2ZjhWMZ" class="img-responsive img-circle img-thumbnail pull-left">
+                    <h5>Mathilda Campbell <br><small><i class="fa fa-map-marker"></i> India</small></h5>
+                  </div>
+                  <div class="col-sm-2 text-right">
+                    <a href="#"><i class="fa fa-trash-o fa-lg"></i></a>
+                    <a href="#"><i class="fa fa-cog fa-lg"></i></a>
+                  </div>
+                </div>
+                <hr>
+                <div class="row text-center py-15">
+                  <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block"><i class="fa fa-envelope"></i> New Message</button>
+                  </div>
+                  <div class="col-sm-6 text-green">
+                    <small class="mt-5"><i class="fa fa-check"></i> Available for Hire</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 candid-card">
+              <div class="card-4">
+                <img src="https://bit.ly/33JBVUr" class="img-responsive main-img"/>
+                <div class="row">
+                  <div class="col-sm-10">
+                    <img src="https://bit.ly/2YSiUjI" class="img-responsive img-circle img-thumbnail pull-left">
+                    <h5>Mathilda Campbell <br><small><i class="fa fa-map-marker"></i> India</small></h5>
+                  </div>
+                  <div class="col-sm-2 text-right">
+                    <a href="#"><i class="fa fa-trash-o fa-lg"></i></a>
+                    <a href="#"><i class="fa fa-cog fa-lg"></i></a>
+                  </div>
+                </div>
+                <hr>
+                <div class="row text-center py-15">
+                  <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block"><i class="fa fa-envelope"></i> New Message</button>
+                  </div>
+                  <div class="col-sm-6 text-green">
+                    <small class="mt-5"><i class="fa fa-check"></i> Available for Hire</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Invoices -->
+      <div id="invoices" class="tab-pane fade">
+        <div class="header">
+          <h4>{{session.name}}</h4>
+
+            <ul class="pull-right">
+              <li>
+                <div class="btn-group dropleft dropdown-user">
+             
+                    <i class="fa fa-user dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2.2rem;">
+                      <!-- <span class="material-icons">notifi</span> -->
+                      <span class="icon-button__badge">{{countp}}</span>
+                    </i>
+      
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in dataapproved %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-check-circle fa-2x"></i>
+                          <p class="pull-right">
+                            {{row.2}}<br>
+                            <small>{{row.12}}</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="btn-group dropleft dropdown-alert">
+                  <i class="fa fa-bell dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2rem;">
+                    <!-- <span class="material-icons">notifi</span> -->
+                    <span class="icon-button__badge">{{rcount}}</span>
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in datarequest %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <!-- <i class="fa fa-check-circle fa-2x"></i> -->
+                          <p class="pull-righ">
+                            {{row.0}}<br>{{row.2}} {{row.3}}
+                            <small>{{row.4}} Requested cancellation </small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="btn-group dropleft dropdown-avatar">
+                  <img src="static/images/{{session.name}}b.svg" class="img-circle img-responvie" width="30px"/><i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <ul class="dropdown-menu"> 
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">View Activity</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+
+        <div class="content">
+          
+          <div class="row table-invoice">
+            <div class="col-sm-12">
+              <div class="table-in-card">
+                <h3>Invoices</h3>
+                <hr>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>No.</th>
+                      <th>Invoice Subject</th>
+                      <th>Client</th>
+                      <th>VAT No.</th>
+                      <th>Created</th>
+                      <th>Status</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>00450</td>
+                      <td>Design Works</td>
+                      <td>Carlson Limited</td>
+                      <td>87956621</td>
+                      <td>15 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-success btn-xs"><small>PAID</small></button>
+                      </td>
+                      <td>$887</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>00450</td>
+                      <td>UX Wireframes</td>
+                      <td>Adobe</td>
+                      <td>87956621</td>
+                      <td>12 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-warning btn-xs"><small>PENDING</small></button>
+                      </td>
+                      <td>$1200</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>00452</td>
+                      <td>New Dashboard</td>
+                      <td>Bluewolf</td>
+                      <td>87956621</td>
+                      <td>15 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-warning btn-xs"><small>PENDING</small></button>
+                      </td>
+                      <td>$534</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>00453</td>
+                      <td>Landing Page</td>
+                      <td>Salesforce</td>
+                      <td>87956621</td>
+                      <td>12 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-grayblue btn-xs"><small class="large">DUE IN 2 WEEKS</small></button>
+                      </td>
+                      <td>$1500</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>00454</td>
+                      <td>Marketing Templates	</td>
+                      <td>Printic</td>
+                      <td>87956621</td>
+                      <td>15 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-danger btn-xs"><small>PAID TODAY</small></button>
+                      </td>
+                      <td>$887</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>00450</td>
+                      <td>UX Wireframes</td>
+                      <td>Adobe</td>
+                      <td>87956621</td>
+                      <td>12 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-warning btn-xs"><small>PENDING</small></button>
+                      </td>
+                      <td>$1200</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>00450</td>
+                      <td>Design Works</td>
+                      <td>Carlson Limited</td>
+                      <td>87956621</td>
+                      <td>15 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-success btn-xs"><small>PAID</small></button>
+                      </td>
+                      <td>$887</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>00450</td>
+                      <td>UX Wireframes</td>
+                      <td>Adobe</td>
+                      <td>87956621</td>
+                      <td>12 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-warning btn-xs"><small>PENDING</small></button>
+                      </td>
+                      <td>$1200</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Single Invoice -->
+      <div id="single-invoice" class="tab-pane fade">
+        <div class="header">
+          <h4>{{session.name}}</h4>
+
+            <ul class="pull-right">
+              <li>
+                <div class="btn-group dropleft dropdown-user">
+             
+                    <i class="fa fa-user dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2.2rem;">
+                      <!-- <span class="material-icons">notifi</span> -->
+                      <span class="icon-button__badge">{{countp}}</span>
+                    </i>
+      
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in dataapproved %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-check-circle fa-2x"></i>
+                          <p class="pull-right">
+                            {{row.2}}<br>
+                            <small>{{row.12}}</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="btn-group dropleft dropdown-alert">
+                  <i class="fa fa-bell dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2rem;">
+                    <!-- <span class="material-icons">notifi</span> -->
+                    <span class="icon-button__badge">{{rcount}}</span>
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in datarequest %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <!-- <i class="fa fa-check-circle fa-2x"></i> -->
+                          <p class="pull-righ">
+                            {{row.0}}<br>{{row.2}} {{row.3}}
+                            <small>{{row.4}} Requested cancellation </small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="btn-group dropleft dropdown-avatar">
+                  <img src="static/images/{{session.name}}b.svg" class="img-circle img-responvie" width="30px"/><i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <ul class="dropdown-menu"> 
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">View Activity</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+
+
+        <div class="content">
+          <div class="container">
+            
+
+           
+
+
+
+            <div class="well text-center">
+
+              <h1>Approve or Reject Events</h1>
+        
+              <div>
+                  
+              </div>
+        
+        
+          </div>
+
+
+            <table style="width:100%; margin: auto;" >
+              {% for row in students %}
+              <tr>
+                 <td>
+          
+                    <div class="eventWrapper">
+                       <div class="event" id="{{row.11}}">
+                        
+                          <div class="event--content">
+          
+                            <div class="headerr">
+                              <p class="club" id="{{row.1}}">{{row.4}} {{row.7}} {{row.6}} | {{row.8}} | {{row.9}} </p>&nbsp;&nbsp;
+                              <p class="status" id="{{row.12}}">{{row.12}}</p>
+  
+                              <a href="/updatestatus/{{row.0}}" id="" data-toggle="modal" data-target="#modaledit{{row.0}}">Approve</a>
+                              <a href="/reject/{{row.0}}" class="btn btn-warning btn-xs" id="" data-toggle="modal" data-target="#modaledit1{{row.0}}">Reject</a>
+                              
+                                <!-- <p class="status"><IMG src="static/images/{{row.status}}white.svg" style="height:20px; margin-right: 10px;">{{row.status}}</p> -->
+                                <!-- <p class="event--content-ensemble"><IMG src="static/images/{{row.club}}.svg" style="height:25px; margin-right: 10px;">{{row.club}}</p> -->
+          
+                            </div >
+          
+                            <style>
+                              .headerr{
+                   
+                                display: flex;
+                                margin-top: auto;
+                                margin-bottom: 1rem;
+                              }
+          
+                              .venue{
+                                font-family: Poppins;
+                              }
+          
+                              .club
+                              {
+                                  border-radius: 20px;
+                                  padding-left: 10px;
+                                  padding-right: 10px;
+                                  font-weight: 500;
+                                  color: #000000;
+                                  padding-top: 3px;
+                                  padding-bottom: 3px;
+                                  
+                              }
+          
+                              #ieeesbgeci
+                              {
+                                background-color: #ffffff;
+                                /* background-color: #f2f2f2; */
+                              }
+                                #fossgeci{
+                                background-color: #d18118;
+                                /* background-color: #f2f2f2; */
+                            
+                              }
+          
+                              #rejected
+                                {
+                                  background-color: #b30101;
+                                  /* background-color: #f2f2f2; */
+                                  
+                                }
+                                  #pending{
+                                  background-color: #e9ab00;
+                                  /* background-color: #f2f2f2; */
+                            
+                              
+                                 }
+                        
+          
+                              .status{
+                                  border-radius: 20px;
+                                  padding-left: 10px;
+                                  padding-right: 10px;
+                         
+                                  font-weight: 500;
+                                  color: #ffffff;
+                                  padding-top: 3px;
+                                  padding-bottom: 3px;
+                           
+                              }
+                            </style>
+                            
+                             <h1 class="event-title">{{row.2}}</h1>
+                          
+                             <style>
+          
+                              .event-title{
+                                font-size: 35px;
+                                font-family:Poppins;
+                                font-weight: 350;
+                              
+                              }
+          
+                              .event-desc{
+                                width: 70%;
+                                font-size: 15px;
+                                font-family:Poppins;
+                                font-weight: 300;
+                              
+                              }
+          
+                                #banner{
+                                background-color: rgb(102, 235, 14);
+                                color: rgb(255, 255, 255);
+                                font-weight: 800;
+                                }
+                             </style>
+                          </div>
+                          
+                       </div>
+                    </div>
+                    
+                 </td>
+            
+              </tr>
+  
+              <div id="modaledit{{row.0}}" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                   <div class="modal-content">
+                      <div class="modal-header">
+                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+                         <h4 class="modal-title"></h4>
+                      </div>
+                      <div class="modal-body">
+                         <form action="{{ url_for('update') }}" method="POST">
+                            <div class="form-group">
+                         
+                               <input type="hidden"  name="id" value="{{row.0}}" style="display:none;">
+                               <input type="text" class="form-control" name="name" value="{{row.2}}"style="display:none;">
+                            </div>
+                            <div class="form-group">
+                            
+                               <input type="text" class="form-control" name="time" value="{{row.8}}" style="display:none;">
+                            </div>
+                            <div class="form-group">
+                        
+                               <input type="text" class="form-control" name="venue" value="{{row.9}}" style="display:none;">
+                            </div>
+                            <div class="form-group">
+                           
+                               <input type="text" class="form-control" name="speaker" value="{{row.10}}" style="display:none;">
+                            </div>
+                            <div class="form-group">
+                              
+                               <input type="text" class="form-control" name="status" value="approved" readonly style="display:none;">
+                            </div>
+                            <div class="form-group">
+                               <button class="btn btn-primary" type="sbumit" onclick="alertfn()">Approve</button>
+                            </div>
+                         </form>
+                      </div>
+                      <div class="modal-footer">
+                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                   </div>
+                </div>
+             </div>
+
+             <div id="modaledit1{{row.0}}" class="modal fade" role="dialog">
+               <div class="modal-dialog">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"></h4>
+                     </div>
+                     <div class="modal-body">
+                        <form action="{{ url_for('update') }}" method="POST">
+                           <div class="form-group">
+                          
+                              <input type="hidden"  name="id" value="{{row.0}}" style="display:none;">
+                              <input type="text" class="form-control" name="name" value="{{row.2}}" style="display:none;">
+                           </div>
+                           <div class="form-group" style="display:none;">
+                     
+                              <input type="text" class="form-control" name="time" value="{{row.8}}">
+                           </div>
+                           <div class="form-group" style="display:none;">
+                              <label>venue:</label>
+                              <input type="text" class="form-control" name="venue" value="{{row.9}}">
+                           </div>
+                           <div class="form-group" style="display:none;">
+                           
+                              <input type="text" class="form-control" name="speaker" value="{{row.10}}">
+                           </div>
+                           <div class="form-group" style="display:none;">
+                              <label>status:</label style="display:none;">
+                              <input type="text" class="form-control" name="status" value="rejected" readonly>
+                           </div>
+                           <div class="form-group">
+                              <button class="btn btn-primary" type="sbumit" onclick="alertfn()">Reject</button>
+                           </div>
+                        </form>
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+  
+              {% endfor %}
+           </table>
+
+           
+
+
+                 
+         
+          </div>
+        </div>
+      </div>
+      
+
+       </div>
+
+
+    </div>
+
+
+ </div>
+
+
+
+<script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+
+<script type="text/javascript" src="{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
+
+ <style>
+  html {
+overflow: scroll;
+overflow-x: hidden;
+}
+::-webkit-scrollbar {
+width: 0;
+background: transparent; 
+}
+
+
+ </style>
+
+        <div class="content">
+          <div class="container browse">
+            <div class="row">
+              <div class="col-sm-4">
+
+              </div> 
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Admin {{session.name}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="main">
+  <div class="left">
+    <ul>
+      <li class="menu-heading">Dashboards</li>
+      
+      <li class="active"><a data-toggle="tab" href="#user-profile"><i class="fa fa-street-view fa-lg"></i>Home</a></li>
+      <li><a data-toggle="tab" href="#landing"><i class="fa fa-plus" aria-hidden="true" ></i>Add events</a></li>
+      <i class="fa-solid fa-chart-line"></i>
+      <li><a data-toggle="tab" href="#projects"><i class="fa fa-table fa-lg"></i> Your events</a></li>
+      <li><a data-toggle="tab" href="#candidates"><i class="fa fa-users fa-lg"></i> update</a></li>
+      <li><a data-toggle="tab" href="#invoices"><i class="fa fa-files-o fa-lg"></i> bla </a></li>
+      <li><a data-toggle="tab" href="#single-invoice"><i class="fa fa-file-text-o fa-lg"></i>Incoming requets</a></li>
+      <li><a data-toggle="tab" href="#browse"><i class="fa fa-search fa-lg"></i> Request cancellation</a></li>
+    </ul>
+  </div>
+  <div class="right"> 
+    <div class="tab-content">
+     
+      <!-- Landing -->
+
+
+      <div id="landing" class="tab-pane fade">
+        
+
+
+
+        <div class="header">
+          <h4>{{session.name}}</h4>
+
+            <ul class="pull-right">
+              <li>
+                <div class="btn-group dropleft dropdown-user">
+             
+                    <i class="fa fa-user dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2.2rem;">
+                      <!-- <span class="material-icons">notifi</span> -->
+                      <span class="icon-button__badge">{{countp}}</span>
+                    </i>
+      
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in dataapproved %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-check-circle fa-2x"></i>
+                          <p class="pull-right">
+                            {{row.2}}<br>
+                            <small>{{row.12}}</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="btn-group dropleft dropdown-alert">
+                  <i class="fa fa-bell dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2rem;">
+                    <!-- <span class="material-icons">notifi</span> -->
+                    <span class="icon-button__badge">{{rcount}}</span>
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in datarequest %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <!-- <i class="fa fa-check-circle fa-2x"></i> -->
+                          <p class="pull-righ">
+                            {{row.0}}<br>{{row.2}} {{row.3}}
+                            <small>{{row.4}} Requested cancellation </small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="btn-group dropleft dropdown-avatar">
+                  <img src="static/images/{{session.name}}b.svg" class="img-circle img-responvie" width="30px"/><i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <ul class="dropdown-menu"> 
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">View Activity</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+
+
+
+
+
+
+
+        <div class="content">
+          <h3 class="text-center">
+            Hi there! Welcome back to the Dashboard. <br>
+            <small> Check out your past searches and the content you’ve browsed in. <a href="#">View last results</a></small>
+          </h3>
+          <div class="row">
+            <div class="col-sm-4 text-center">
+              <div class="card-4">
+                <img src="https://bit.ly/2YO9Mws" alt="">
+                <p>Check your performance. See the results of all your active campaings.</p>
+              <button class="btn btn-info">Start new campaign</button>
+              </div>
+            </div>
+            <div class="col-sm-4 text-center">
+              <div class="card-4">
+                <img src="https://bit.ly/2TxGv33" alt="">
+                <p>Start console and prepare new stuff for your customers or community!</p>
+              <button class="btn btn-info">View your reports</button>
+              </div>
+            </div>
+            <div class="col-sm-4 text-center">
+              <div class="card-4">
+                <img src="https://bit.ly/2KyiS7T" alt="">
+                <p>All Files ready? <br>Start promoting your apps today.</p>
+              <button class="btn btn-info">Start using dashboard</button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>Dashboard Overview</h3>
+              <div class="card-6">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <h4>801, 523 <br> <small>Newsletters Sent</small></h4>
+                    <img src="https://bit.ly/2yYe5pz" alt="">
+                  </div>
+                  <div class="col-sm-4">
+                    <h4>45, 957 <br> <small>Newsletters Sent</small></h4>
+                    <img src="https://bit.ly/2yYe5pz" alt="">
+                  </div>
+                  <div class="col-sm-4">
+                    <h4>1, 024 <br> <small>Newsletters Sent</small></h4>
+                    <img src="https://bit.ly/2yYe5pz" alt="">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h5><small>Open Rate</small><br>32.21%</h5>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="32.21" aria-valuemin="0" aria-valuemax="100" style="width: 32.21%">
+                        <span class="sr-only">32.21% Complete (success)</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <h5><small>Read Rate</small><br>75.21%</h5>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="75.21" aria-valuemin="0" aria-valuemax="100" style="width: 75.21%">
+                        <span class="sr-only">32.21% Complete (success)</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <h5><small>Attachments</small><br>63.45%</h5>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="63.45" aria-valuemin="0" aria-valuemax="100" style="width: 63.45%">
+                        <span class="sr-only">63.45% Complete (success)</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <h5><small>New Subs</small><br>72.4%</h5>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="72.4" aria-valuemin="0" aria-valuemax="100" style="width: 72.4%">
+                        <span class="sr-only">72.4% Complete (success)</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <h3>
+                Recently Opened
+                <p class="pull-right">
+                  <select class="form-control">
+                    <option>All types</option>
+                    <option>This day</option>
+                    <option>Last week</option>
+                  </select>
+                </p>
+              </h3>
+              <div class="card-6">
+                <div class="table-responsive">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td><img src="https://bit.ly/2N7po7n" class="img-rounded"></td>
+                        <td><i class="fa fa-file-pdf-o text-red"></i> Santorini.pdf</td>
+                        <td>25MB | Edited 1 minute ago</td>
+                      </tr>
+                      <tr>
+                        <td><img src="https://bit.ly/2yYgK2x" class="img-rounded"></td>
+                        <td><i class="fa fa-file-pdf-o text-red"></i> Sea Presentation.pdf</td>
+                        <td>12MB | Edited 3 minute ago</td> 
+                      </tr>
+                      <tr>
+                        <td><img src="https://bit.ly/2OXtcKC" class="img-rounded"></td>
+                        <td><i class="fa fa-file-text-o text-success"></i> Lakes in India.doc</td>
+                        <td>25MB | Edited 1 minute ago</td>
+                      </tr>
+                      <tr>
+                        <td><img src="https://bit.ly/2N7po7n" class="img-rounded"></td>
+                        <td><i class="fa fa-file-pdf-o text-red"></i> Santorini.pdf</td>
+                        <td>25MB | Edited 1 minute ago</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Projects -->
+      <div id="projects" class="tab-pane fade">
+        
+
+
+
+        <div class="header">
+          <h4>{{session.name}}</h4>
+
+            <ul class="pull-right">
+              <li>
+                <div class="btn-group dropleft dropdown-user">
+             
+                    <i class="fa fa-user dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2.2rem;">
+                      <!-- <span class="material-icons">notifi</span> -->
+                      <span class="icon-button__badge">{{countp}}</span>
+                    </i>
+      
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in dataapproved %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-check-circle fa-2x"></i>
+                          <p class="pull-right">
+                            {{row.2}}<br>
+                            <small>{{row.12}}</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="btn-group dropleft dropdown-alert">
+                  <i class="fa fa-bell dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2rem;">
+                    <!-- <span class="material-icons">notifi</span> -->
+                    <span class="icon-button__badge">{{rcount}}</span>
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in datarequest %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <!-- <i class="fa fa-check-circle fa-2x"></i> -->
+                          <p class="pull-righ">
+                            {{row.0}}<br>{{row.2}} {{row.3}}
+                            <small>{{row.4}} Requested cancellation </small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="btn-group dropleft dropdown-avatar">
+                  <img src="static/images/{{session.name}}b.svg" class="img-circle img-responvie" width="30px"/><i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <ul class="dropdown-menu"> 
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">View Activity</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        <div class="content">
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="card-3">
+                <h3><small>Total events</small>
+                <span class="pull-right"><i class="fa fa-arrow-circle-o-up fa-2x"></i></span>
+                  <br>{{curcount}}
+                </h3>
+                <hr>
+                <!-- <small>13% INCREASE</small> -->
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="card-3">
+                <h3><small>Approval pending</small>
+                <span class="pull-right"><i class="fa fa-arrow-circle-o-up fa-2x"></i></span>
+                  <br>{{countp}}
+                </h3>
+                <hr>
+                <!-- <small>4% INCREASE</small> -->
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="card-3">
+                <h3><small>Approved</small>
+                <span class="pull-right"><i class="fa fa-arrow-circle-o-down fa-2x"></i></span>
+                  <br>{{counta}}
+
+                </h3>
+                <hr>
+                <!-- <small>21% DECREASE</small> -->
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="card-3">
+                <h3><small>Cancellation Requests</small>
+                <span class="pull-right"><i class="fa fa-arrow-circle-o-down fa-2x"></i></span>
+                  <br>{{rcount}}
+                </h3>
+                <hr>
+                <!-- <small>4% DECREASE</small> -->
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="responsive-table">
+              <h3>Your events <small> {{curcount}} events</small><i class="fa fa-cloud-download pull-right"></i></h3>
+              <table class="table">
+           
+
+
+
+
+                
+                <tbody>
+                    {% for row in students %}
+                  <tr class="danger">
+                    <td><h1> <img src="static/images/{{row.12}}.svg" width="25px">&nbsp;{{row.2}}</h1><br> <small>Google</small>
+                    17th Oct, 17 <small class="text-red">Overdue</small>
+                
+      
+                      <p>Norman Hammond <br>
+                      <small>UK Design Team</small></p>
+                    </td>
+                    <td>hehe<br> <small>Paid</small></td>
+                    <td><i class="fa fa-circle-o text-orange"></i>{{row.12}}</td> 
+                    <td>
+                      <div class="btn-group dropleft">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                          Actions <i class="fa fa-angle-down"></i>
+                        </button>
+                        <ul class="dropdown-menu"> 
+
+                          
+                          
+                          <li> <a href="/updatestatus/{{row.0}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{row.0}}">Approve</a></li>
+                          <li> <a href="/reject/{{row.0}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit1{{row.0}}">Reject</a></li>
+                          <li><a href="#">Manage Roles</a></li>
+                        </ul>
+                      </div>
+                    </td>
+                    
+                  </tr>
+
+                  <div id="modaledit{{row.0}}" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                       <div class="modal-content">
+                          <div class="modal-header">
+                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                             <h4 class="modal-title">Update Information</h4>
+                          </div>
+                          <div class="modal-body">
+                             <form action="{{ url_for('update') }}" method="POST">
+                                <div class="form-group">
+                                   <label>Name:</label>
+                                   <input type="hidden"  name="id" value="{{row.0}}">
+                                   <input type="text" class="form-control" name="name" value="{{row.2}}">
+                                </div>
+                                <div class="form-group">
+                                   <label>time:</label>
+                                   <input type="text" class="form-control" name="time" value="{{row.8}}">
+                                </div>
+                                <div class="form-group">
+                                   <label>venue:</label>
+                                   <input type="text" class="form-control" name="venue" value="{{row.9}}">
+                                </div>
+                                <div class="form-group">
+                                   <label>speaker:</label>
+                                   <input type="text" class="form-control" name="speaker" value="{{row.10}}">
+                                </div>
+                                <div class="form-group">
+                                   <label>status:</label>
+                                   <input type="text" class="form-control" name="status" value="{{row.12}}" readonly>
+                                </div>
+                                <div class="form-group">
+                                   <button class="btn btn-primary" type="sbumit" onclick="alertfn()">Update</button>
+                                </div>
+                             </form>
+                          </div>
+                          <div class="modal-footer">
+                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                
+
+                  {% endfor  %}
+                  
+                </tbody>
+              </table>
+
+              
+      
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- User Profile -->
+      <div id="user-profile" class="tab-pane fade in active">
+        <div class="header">
+          <h4>{{session.name}}</h4>
+
+            <ul class="pull-right">
+              <li>
+                <div class="btn-group dropleft dropdown-user">
+             
+                    <i class="fa fa-user dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2.2rem;">
+                      <!-- <span class="material-icons">notifi</span> -->
+                      <span class="icon-button__badge">{{countp}}</span>
+                    </i>
+      
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in dataapproved %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-check-circle fa-2x"></i>
+                          <p class="pull-right">
+                            {{row.2}}<br>
+                            <small>{{row.12}}</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="btn-group dropleft dropdown-alert">
+                  <i class="fa fa-bell dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2rem;">
+                    <!-- <span class="material-icons">notifi</span> -->
+                    <span class="icon-button__badge">{{rcount}}</span>
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in datarequest %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <!-- <i class="fa fa-check-circle fa-2x"></i> -->
+                          <p class="pull-righ">
+                            {{row.0}}<br>{{row.2}} {{row.3}}
+                            <small>{{row.4}} Requested cancellation </small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="btn-group dropleft dropdown-avatar">
+                  <img src="static/images/{{session.name}}b.svg" class="img-circle img-responvie" width="30px"/><i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <ul class="dropdown-menu"> 
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">View Activity</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        <div class="content">
+          <div class="row">
+            <div class="col-sm-7">
+              <div class="card-7">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="active"><a href="#activity" role="tab" data-toggle="tab">Activity</a></li>
+                  <li><a href="#blockedusers" role="tab" data-toggle="tab">Blocked Users</a></li>
+                  <li><a href="#nda" role="tab" data-toggle="tab">NDAs</a></li>
+                  <li><a href="#customerinvoices" role="tab" data-toggle="tab">Customer Invoices</a></li>
+                </ul> 
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane active" id="activity">
+                    <ul>
+                      <small class="title">TODAY</small>
+                      <li>
+                        <h6>
+                          Gerald Vaughn changed the status to QA on <b>MA-86 - Retargeting Ads</b><br>
+                          <span>I’ve prepared all sizes for you. Can you take a look tonight so we can prepare my final invoice?</span>
+                          <small>New Dashboard Design - 9:24PM</small>
+                        </h6>
+                      </li>
+                      
+                    </ul>
+                    
+                    
+                  </div>
+                  <div role="tabpanel" class="tab-pane" id="blockedusers">
+                    <h4>Blocked users</h4>
+                    <hr>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et quidem modi atque at aliquid expedita nemo incidunt exercitationem nihil sit. Laudantium suscipit id amet saepe ratione, accusamus. Voluptatum in, nam.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A voluptate nobis tenetur mollitia incidunt quod, est veniam, earum nemo! Alias rerum saepe aut sapiente minus sunt doloribus tempora corrupti in!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea distinctio nostrum molestias assumenda, repudiandae consequuntur quae pariatur aut incidunt placeat doloremque doloribus! Recusandae nostrum dolore repudiandae libero mollitia, rem eveniet.</p>
+                  </div>
+                  <div role="tabpanel" class="tab-pane" id="nda">
+                    <h4>NDA</h4>
+                    <hr>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et quidem modi atque at aliquid expedita nemo incidunt exercitationem nihil sit. Laudantium suscipit id amet saepe ratione, accusamus. Voluptatum in, nam.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A voluptate nobis tenetur mollitia incidunt quod, est veniam, earum nemo! Alias rerum saepe aut sapiente minus sunt doloribus tempora corrupti in!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea distinctio nostrum molestias assumenda, repudiandae consequuntur quae pariatur aut incidunt placeat doloremque doloribus! Recusandae nostrum dolore repudiandae libero mollitia, rem eveniet.</p>
+                  </div>
+                  <div role="tabpanel" class="tab-pane" id="customerinvoices">
+                    <h4>Customer Invoices</h4>
+                    <hr>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et quidem modi atque at aliquid expedita nemo incidunt exercitationem nihil sit. Laudantium suscipit id amet saepe ratione, accusamus. Voluptatum in, nam.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A voluptate nobis tenetur mollitia incidunt quod, est veniam, earum nemo! Alias rerum saepe aut sapiente minus sunt doloribus tempora corrupti in!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea distinctio nostrum molestias assumenda, repudiandae consequuntur quae pariatur aut incidunt placeat doloremque doloribus! Recusandae nostrum dolore repudiandae libero mollitia, rem eveniet.</p>
+                  </div>
+                </div>
+              </div> 
+            </div>
+            <div class="col-sm-5">
+              <div class="card-5">
+                <div class="profile">
+                  <img src="https://bit.ly/2MoguT5" class="img-circle">
+                  <h4>Sree
+                    <small>UI/UX Designer</small>
+                    <small>Hyderabad, India</small>
+                  </h4>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block">Edit</button>
+                  </div>
+                  <div class="col-sm-6">
+                    <button class="btn btn-default btn-block">Edit</button>
+                  </div>
+                </div><br>
+                <hr>
+                <div class="row dtls">
+                  <div class="col-sm-3 text-center">
+                    <h5>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i><br>
+                      <small>RATING</small>
+                    </h5>
+                  </div>
+                  <div class="col-sm-3 text-center">
+                    <h5>
+                      38<br>
+                      <small>REVIEW</small>
+                    </h5>
+                  </div>
+                  <div class="col-sm-3 text-center">
+                    <h5>
+                      54<br>
+                      <small>CLIENTS</small>
+                    </h5>
+                  </div>
+                  <div class="col-sm-3 text-center">
+                    <h5>
+                      186<br>
+                      <small>FINISHED GIGS</small>
+                    </h5>
+                  </div>
+                </div>
+                <hr>
+                <div class="fb">
+                  <span class="pull-left"><i class="fa fa-pencil fa-lg text-primary"></i></span>
+                  <h5>Product Designer <br><small>Facebook - Hyderabad, India</small></h5>
+                </div>
+                <div class="drop">
+                  <span class="pull-left"><i class="fa fa-dropbox fa-lg text-primary"></i></span>
+                  <h5>Intern <br><small>Dropbox - Hyderabad, India</small></h5>
+                </div>
+                <hr>
+                <div class="link text-center">
+                  <a href="https://codepen.io/srees-evd" target="_blank"><i class="fa fa-globe"></i> https://codepen.io/srees-evd</a>
+                </div>
+              </div>
+              <div class="card-5 billing">
+                <h4>Billing</h4>
+                <div class="row billing-row">
+                  <div class="col-sm-6"><i class="fa fa-credit-card"></i> Ending **** 5896</div>
+                  <div class="col-sm-3 text-right">05 / 19	</div>
+                  <div class="col-sm-3 text-right text-gray">VISA</div>
+                </div>
+                <hr>
+                <div class="table-responsive">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td>PRO Package</td>
+                        <td>Standard Payment</td>
+                        <td>19 Jan 2018</td>
+                      </tr>
+                      <tr>
+                        <td>Job Posted</td>
+                        <td>30-Days Recuring</td>
+                        <td>24 Nov 2017</td>
+                      </tr>
+                      <tr>
+                        <td>PRO Package	</td>
+                        <td>Gift</td>
+                        <td>7 Mar 2017</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Candidates -->
+      <div id="candidates" class="tab-pane fade">
+        <div class="header">
+          <h4>{{session.name}}</h4>
+
+            <ul class="pull-right">
+              <li>
+                <div class="btn-group dropleft dropdown-user">
+             
+                    <i class="fa fa-user dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2.2rem;">
+                      <!-- <span class="material-icons">notifi</span> -->
+                      <span class="icon-button__badge">{{countp}}</span>
+                    </i>
+      
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in dataapproved %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-check-circle fa-2x"></i>
+                          <p class="pull-right">
+                            {{row.2}}<br>
+                            <small>{{row.12}}</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="btn-group dropleft dropdown-alert">
+                  <i class="fa fa-bell dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2rem;">
+                    <!-- <span class="material-icons">notifi</span> -->
+                    <span class="icon-button__badge">{{rcount}}</span>
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in datarequest %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <!-- <i class="fa fa-check-circle fa-2x"></i> -->
+                          <p class="pull-righ">
+                            {{row.0}}<br>{{row.2}} {{row.3}}
+                            <small>{{row.4}} Requested cancellation </small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="btn-group dropleft dropdown-avatar">
+                  <img src="static/images/{{session.name}}b.svg" class="img-circle img-responvie" width="30px"/><i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <ul class="dropdown-menu"> 
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">View Activity</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+        <div class="content">
+          <div class="row">
+            <div class="col-sm-4 candid-card">
+              <div class="card-4">
+                <img src="https://bit.ly/2Z2Rhol" class="img-responsive main-img"/>
+                <div class="row">
+                  <div class="col-sm-10">
+                    <img src="https://bit.ly/2OWjYOV" class="img-responsive img-circle img-thumbnail pull-left">
+                    <h5>Mathilda Campbell <br><small><i class="fa fa-map-marker"></i> India</small></h5>
+                  </div>
+                  <div class="col-sm-2 text-right">
+                    <a href="#"><i class="fa fa-trash-o fa-lg"></i></a>
+                    <a href="#"><i class="fa fa-cog fa-lg"></i></a>
+                  </div>
+                </div>
+                <hr>
+                <div class="row text-center py-15">
+                  <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block"><i class="fa fa-envelope"></i> New Message</button>
+                  </div>
+                  <div class="col-sm-6 text-green">
+                    <small class="mt-5"><i class="fa fa-check"></i> Available for Hire</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 candid-card">
+              <div class="card-4">
+                <img src="https://bit.ly/2TCl1lG" class="img-responsive main-img"/>
+                <div class="row">
+                  <div class="col-sm-10">
+                    <img src="https://bit.ly/2Z9sZUH" class="img-responsive img-circle img-thumbnail pull-left">
+                    <h5>Mathilda Campbell <br><small><i class="fa fa-map-marker"></i> India</small></h5>
+                  </div>
+                  <div class="col-sm-2 text-right">
+                    <a href="#"><i class="fa fa-trash-o fa-lg"></i></a>
+                    <a href="#"><i class="fa fa-cog fa-lg"></i></a>
+                  </div>
+                </div>
+                <hr>
+                <div class="row text-center py-15">
+                  <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block"><i class="fa fa-envelope"></i> New Message</button>
+                  </div>
+                  <div class="col-sm-6 text-green">
+                    <small class="mt-5"><i class="fa fa-check"></i> Available for Hire</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 candid-card">
+              <div class="card-4">
+                <img src="https://bit.ly/2Z6stLb" class="img-responsive main-img"/>
+                <div class="row">
+                  <div class="col-sm-10">
+                    <img src="https://bit.ly/2Z4W1cd" class="img-responsive img-circle img-thumbnail pull-left">
+                    <h5>Mathilda Campbell <br><small><i class="fa fa-map-marker"></i> India</small></h5>
+                  </div>
+                  <div class="col-sm-2 text-right">
+                    <a href="#"><i class="fa fa-trash-o fa-lg"></i></a>
+                    <a href="#"><i class="fa fa-cog fa-lg"></i></a>
+                  </div>
+                </div>
+                <hr>
+                <div class="row text-center py-15">
+                  <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block"><i class="fa fa-envelope"></i> New Message</button>
+                  </div>
+                  <div class="col-sm-6 text-green">
+                    <small class="mt-5"><i class="fa fa-check"></i> Available for Hire</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4 candid-card">
+              <div class="card-4">
+                <img src="https://bit.ly/30evAhw" class="img-responsive main-img"/>
+                <div class="row">
+                  <div class="col-sm-10">
+                    <img src="https://bit.ly/2KP3DX7" class="img-responsive img-circle img-thumbnail pull-left">
+                    <h5>Mathilda Campbell <br><small><i class="fa fa-map-marker"></i> India</small></h5>
+                  </div>
+                  <div class="col-sm-2 text-right">
+                    <a href="#"><i class="fa fa-trash-o fa-lg"></i></a>
+                    <a href="#"><i class="fa fa-cog fa-lg"></i></a>
+                  </div>
+                </div>
+                <hr>
+                <div class="row text-center py-15">
+                  <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block"><i class="fa fa-envelope"></i> New Message</button>
+                  </div>
+                  <div class="col-sm-6 text-green">
+                    <small class="mt-5"><i class="fa fa-check"></i> Available for Hire</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 candid-card">
+              <div class="card-4">
+                <img src="https://bit.ly/2KQ3se3" class="img-responsive main-img"/>
+                <div class="row">
+                  <div class="col-sm-10">
+                    <img src="https://bit.ly/2ZjhWMZ" class="img-responsive img-circle img-thumbnail pull-left">
+                    <h5>Mathilda Campbell <br><small><i class="fa fa-map-marker"></i> India</small></h5>
+                  </div>
+                  <div class="col-sm-2 text-right">
+                    <a href="#"><i class="fa fa-trash-o fa-lg"></i></a>
+                    <a href="#"><i class="fa fa-cog fa-lg"></i></a>
+                  </div>
+                </div>
+                <hr>
+                <div class="row text-center py-15">
+                  <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block"><i class="fa fa-envelope"></i> New Message</button>
+                  </div>
+                  <div class="col-sm-6 text-green">
+                    <small class="mt-5"><i class="fa fa-check"></i> Available for Hire</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 candid-card">
+              <div class="card-4">
+                <img src="https://bit.ly/33JBVUr" class="img-responsive main-img"/>
+                <div class="row">
+                  <div class="col-sm-10">
+                    <img src="https://bit.ly/2YSiUjI" class="img-responsive img-circle img-thumbnail pull-left">
+                    <h5>Mathilda Campbell <br><small><i class="fa fa-map-marker"></i> India</small></h5>
+                  </div>
+                  <div class="col-sm-2 text-right">
+                    <a href="#"><i class="fa fa-trash-o fa-lg"></i></a>
+                    <a href="#"><i class="fa fa-cog fa-lg"></i></a>
+                  </div>
+                </div>
+                <hr>
+                <div class="row text-center py-15">
+                  <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block"><i class="fa fa-envelope"></i> New Message</button>
+                  </div>
+                  <div class="col-sm-6 text-green">
+                    <small class="mt-5"><i class="fa fa-check"></i> Available for Hire</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Invoices -->
+      <div id="invoices" class="tab-pane fade">
+        <div class="header">
+          <h4>{{session.name}}</h4>
+
+            <ul class="pull-right">
+              <li>
+                <div class="btn-group dropleft dropdown-user">
+             
+                    <i class="fa fa-user dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2.2rem;">
+                      <!-- <span class="material-icons">notifi</span> -->
+                      <span class="icon-button__badge">{{countp}}</span>
+                    </i>
+      
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in dataapproved %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-check-circle fa-2x"></i>
+                          <p class="pull-right">
+                            {{row.2}}<br>
+                            <small>{{row.12}}</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="btn-group dropleft dropdown-alert">
+                  <i class="fa fa-bell dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2rem;">
+                    <!-- <span class="material-icons">notifi</span> -->
+                    <span class="icon-button__badge">{{rcount}}</span>
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in datarequest %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <!-- <i class="fa fa-check-circle fa-2x"></i> -->
+                          <p class="pull-righ">
+                            {{row.0}}<br>{{row.2}} {{row.3}}
+                            <small>{{row.4}} Requested cancellation </small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="btn-group dropleft dropdown-avatar">
+                  <img src="static/images/{{session.name}}b.svg" class="img-circle img-responvie" width="30px"/><i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <ul class="dropdown-menu"> 
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">View Activity</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+
+        <div class="content">
+          
+          <div class="row table-invoice">
+            <div class="col-sm-12">
+              <div class="table-in-card">
+                <h3>Invoices</h3>
+                <hr>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>No.</th>
+                      <th>Invoice Subject</th>
+                      <th>Client</th>
+                      <th>VAT No.</th>
+                      <th>Created</th>
+                      <th>Status</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>00450</td>
+                      <td>Design Works</td>
+                      <td>Carlson Limited</td>
+                      <td>87956621</td>
+                      <td>15 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-success btn-xs"><small>PAID</small></button>
+                      </td>
+                      <td>$887</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>00450</td>
+                      <td>UX Wireframes</td>
+                      <td>Adobe</td>
+                      <td>87956621</td>
+                      <td>12 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-warning btn-xs"><small>PENDING</small></button>
+                      </td>
+                      <td>$1200</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>00452</td>
+                      <td>New Dashboard</td>
+                      <td>Bluewolf</td>
+                      <td>87956621</td>
+                      <td>15 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-warning btn-xs"><small>PENDING</small></button>
+                      </td>
+                      <td>$534</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>00453</td>
+                      <td>Landing Page</td>
+                      <td>Salesforce</td>
+                      <td>87956621</td>
+                      <td>12 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-grayblue btn-xs"><small class="large">DUE IN 2 WEEKS</small></button>
+                      </td>
+                      <td>$1500</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>00454</td>
+                      <td>Marketing Templates	</td>
+                      <td>Printic</td>
+                      <td>87956621</td>
+                      <td>15 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-danger btn-xs"><small>PAID TODAY</small></button>
+                      </td>
+                      <td>$887</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>00450</td>
+                      <td>UX Wireframes</td>
+                      <td>Adobe</td>
+                      <td>87956621</td>
+                      <td>12 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-warning btn-xs"><small>PENDING</small></button>
+                      </td>
+                      <td>$1200</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>00450</td>
+                      <td>Design Works</td>
+                      <td>Carlson Limited</td>
+                      <td>87956621</td>
+                      <td>15 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-success btn-xs"><small>PAID</small></button>
+                      </td>
+                      <td>$887</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>00450</td>
+                      <td>UX Wireframes</td>
+                      <td>Adobe</td>
+                      <td>87956621</td>
+                      <td>12 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-warning btn-xs"><small>PENDING</small></button>
+                      </td>
+                      <td>$1200</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Single Invoice -->
+      <div id="single-invoice" class="tab-pane fade">
+        <div class="header">
+          <h4>{{session.name}}</h4>
+
+            <ul class="pull-right">
+              <li>
+                <div class="btn-group dropleft dropdown-user">
+             
+                    <i class="fa fa-user dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2.2rem;">
+                      <!-- <span class="material-icons">notifi</span> -->
+                      <span class="icon-button__badge">{{countp}}</span>
+                    </i>
+      
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in dataapproved %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-check-circle fa-2x"></i>
+                          <p class="pull-right">
+                            {{row.2}}<br>
+                            <small>{{row.12}}</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="btn-group dropleft dropdown-alert">
+                  <i class="fa fa-bell dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2rem;">
+                    <!-- <span class="material-icons">notifi</span> -->
+                    <span class="icon-button__badge">{{rcount}}</span>
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in datarequest %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <!-- <i class="fa fa-check-circle fa-2x"></i> -->
+                          <p class="pull-righ">
+                            {{row.0}}<br>{{row.2}} {{row.3}}
+                            <small>{{row.4}} Requested cancellation </small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="btn-group dropleft dropdown-avatar">
+                  <img src="static/images/{{session.name}}b.svg" class="img-circle img-responvie" width="30px"/><i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <ul class="dropdown-menu"> 
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">View Activity</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+
+
+        <div class="content">
+          <div class="container">
+            <div class="s-inv-card">
+              <div class="row">
+                <div class="s-inv-header">
+                  <div class="col-sm-9">
+                    <h3><i class="fa fa-ravelry fa-lg text-green"></i><br><br><b> MyDashboard Pvt Ltd</b></h3>
+                  </div>
+                  <div class="col-sm-3">
+                    <h4><b> Invoice</b> <br> <small> 22 July 2019</small></h4>
+                  </div>
+                </div>
+              </div> 
+              <div class="row">
+                <div class="s-inv-details">
+                  <div class="col-sm-9">
+                    <h4>
+                      <small>From:</small><br>
+                      <b>Dashboard Inc</b> <br><br>
+                      <small>
+                        39 MIJ Road,<br>
+                        Jubilee Hills, Hyderabad <br>
+                        India
+                      </small>
+                    </h4>
+                  </div>
+                  <div class="col-sm-3">
+                    <h4>
+                      <small>To:</small><br>
+                      <b>Client Inc</b> <br><br>
+                      <small>
+                        248 Blooms Ave,<br>
+                        PVLC, Shamshabad<br>
+                        India
+                      </small>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="s-inv-body">
+                  <div class="col-sm-3">
+                    <h4><b> Invoice#</b> <br><small>ASLF 674323</small></h4>
+                  </div>
+                  <div class="col-sm-9">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Description</th>
+                            <th>Qty</th>
+                            <th>Price</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Website Design</td>
+                            <td>2</td>
+                            <td>$4,500</td>
+                          </tr>
+                          <tr>
+                            <td>UI Development</td>
+                            <td>3</td>
+                            <td>$7,500</td>
+                          </tr>
+                          <tr>
+                            <td>Landing Page</td>
+                            <td>1</td>
+                            <td>$2,320</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <th>Total</th>
+                            <th></th>
+                            <th>$15,490</th>
+                          </tr>
+                        </tfoot>
+                      </table>
+                      <small class="text-muted">All amounts shown on this invoice are in US dollars.</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="s-inv-footer">
+                  <div class="col-sm-9"><i class="fa fa-ravelry fa-lg text-green"></i> MyDashboard UI</div>
+                  <div class="col-sm-3">hello@mydashboard.in</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Browse -->
+      <div id="browse" class="tab-pane fade">
+        
+
+        <div class="header">
+          <h4>{{session.name}}</h4>
+
+            <ul class="pull-right">
+              <li>
+                <div class="btn-group dropleft dropdown-user">
+             
+                    <i class="fa fa-user dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2.2rem;">
+                      <!-- <span class="material-icons">notifi</span> -->
+                      <span class="icon-button__badge">{{countp}}</span>
+                    </i>
+      
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in dataapproved %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-check-circle fa-2x"></i>
+                          <p class="pull-right">
+                            {{row.2}}<br>
+                            <small>{{row.12}}</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="btn-group dropleft dropdown-alert">
+                  <i class="fa fa-bell dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2rem;">
+                    <!-- <span class="material-icons">notifi</span> -->
+                    <span class="icon-button__badge">{{rcount}}</span>
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in datarequest %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <!-- <i class="fa fa-check-circle fa-2x"></i> -->
+                          <p class="pull-righ">
+                            {{row.0}}<br>{{row.2}} {{row.3}}
+                            <small>{{row.4}} Requested cancellation </small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="btn-group dropleft dropdown-avatar">
+                  <img src="static/images/{{session.name}}b.svg" class="img-circle img-responvie" width="30px"/><i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <ul class="dropdown-menu"> 
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">View Activity</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+
+<script type="text/javascript" src="{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
+
+<script>
+
+ $('#calendarFull').fullCalendar({
+     header: {
+         left: 'prev,next today',
+         center: 'title',
+         right: 'month,agendaWeek,agendaDay'
+     },
+     defaultView: 'month',
+     editable: true,
+     eventSources: [
+       {
+         events: [
+           {
+             title: "event3",
+             start: "2019-03-09T12:30:00"
+           }
+         ],
+         color: "black", // an option!
+         textColor: "yellow" // an option!
+       }
+     ],
+     select: function( start, end, jsEvent, view ) {
+         // set values in inputs
+         $('#event-modal').find('input[name=date]').val(
+             start.format('DD-MM-YYYY')
+         );
+         $('#event-modal').find('input[name=evtEnd]').val(
+             end.format('YYYY-MM-DD HH:mm:ss')
+         );
+         
+         // show modal dialog
+         $('#event-modal').modal('show');
+         
+         /*
+         bind event submit. Will perform a ajax call in order to save the event to the database.
+         When save is successful, close modal dialog and refresh fullcalendar.
+         */
+         /*
+         $("#event-modal").find('form').on('submit', function() {
+             $.ajax({
+                 url: 'yourFileUrl.php',
+                 data: $("#event-modal").serialize(),
+                 type: 'post',
+                 dataType: 'json',
+                 success: function(response) {
+                     // if saved, close modal
+                     $("#event-modal").modal('hide');
+                     
+                     // refetch event source, so event will be showen in calendar
+                     $("#calendar").fullCalendar( 'refetchEvents' );
+                 }
+             });
+         });*/
+     },
+     selectHelper: true,
+     selectable: true,
+     snapDuration: '00:10:00'
+ });
+ 
+ 
+ </script>
+  <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.1.1/fullcalendar.min.js'></script>
+  <script src='https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script><script  src="./script.js"></script>
+ 
+        <div class="content">
+          <div class="container browse">
+            <div class="row">
+              <div class="col-sm-4">
+
+              </div> 
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+
+  
+  .loginbutton{
+    background-color: #2196f3;
+    border: none;
+    color: white;
+    padding: 10px;
+    width: 100px;
+    margin-top: 10px;
+    border-radius: 15px;
+  }
+  
+  
+  .buttonbody{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:0;
+
+  }
+  
+  .three_button{
+  
+  
+    background-color: #ffffff;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    width: 100px;
+    margin-top: 10px;
+    border-radius: 15px;
+  }
+  .three_button:focus{
+    outline:none;
+  }
+  .three_button:active{
+    box-shadow: 0px 5px 0px 0px #1d7f8a;
+    top:5px;
+  }
+  
+  
+  
+      .lightbox-window {
+      position: fixed;
+      background-color: rgba(50, 50, 50, 0.95);
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 999;
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s;
+    }
+    .lightbox-window:target {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .lightbox-window > div {
+      height: 90vh;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 2em;
+      background: white;
+    }
+    .lightbox-close {
+      color: #aaa;
+      line-height: 50px;
+      font-size: 80%;
+      position: absolute;
+      right: 10px;
+      text-align: center;
+      top: 0;
+      width: 80px;
+      text-decoration: none;
+    }
+    .lightbox-close:hover {
+      color: black;
+    }
+    /* Demo Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      line-height: 1.5;
+      background-color: #f9f9f9;
+    }
+    .omdbtn {
+      color: #000;
+      background: white;
+      line-height: 50px;
+      margin: 100px auto 0 auto;
+      width: 220px;
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .btn:hover {
+      color: black;
+    }
+    .webgarten {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 13px;
+    }
+    
+    
+    @media only screen and (max-width: 600px) 
+    {
+      #calendarFull{
+    
+    width: 100%;
+    }
+    
+    .lightbox-window > div {
+      width: 100%;
+    
+    }
+    
+    .content{
+        display: block;
+      }
+    
+    
+    }
+    
+    
+    @media only screen and (min-width: 992px)
+    { 
+      #calendarFull{
+    
+    width: 100%;
+    }
+    
+    .content{
+        display: flex;
+      }
+    
+    
+    }
+    
+    .count{
+        width: 20%;
+        /* background-color: rgba(202, 3, 3, 0.979); */
+      }
+      .content{
+        /* background-color: rgb(15, 15, 15); */
+        background-color: rgb(255, 255, 255);
+    
+    
+      }
+    
+      .main{
+        width: 70%;
+      }
+    
+
+    
+    

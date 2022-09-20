@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  -->
+    <!-- <link rel="stylesheet" href="static/css/home.css"> -->
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <!-- <link href="static/css/desk.css" rel="stylesheet">
+    <link href="static/css/mobile.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"> -->
+    <title>DotDash</title>
+</head>
+<body>
+<style>
+  .modale {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modale.open {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+}
+.modalbg {
+    position: absolute;
+    background: rgb(14, 177, 199);
+    width: 100%;
+    height: 100%;
+}
+.modalcontainer {
+    border-radius: 10px;
+    background: #fff;
+    position: relative;
+    padding: 30px;
+}
+.modale-close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    outline: none;
+    appearance: none;
+    color: red;
+    background: none;
+    border: 0px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+</style>
+    
+                <button id="button" data-modal="modalone">Login</button>
+
+
+
+
+                    <div class="modale" id="modalone" >
+
+                    
+
+                      <div class="modalbg modal-exit"></div>
+                      <div class="modalcontainer">
+                        {% if mesage is defined and mesage %}
+                        <div class="alert alert-warning">{{ mesage }}</div>
+                      {% endif %}
+  
+
+                   
+
+
+                        <div id="signin">
+                            <!-- <div ><img  id="logo" src="static/images/logob.svg"></div> -->
+                            <h1 class="logintitle">User Login</h1>
+                            <h1><a href="{{ url_for('adminlogin') }}"> admin </a></h1>
+
+                            
+                            <form id="loginform" action="{{ url_for('login') }}" method="post">
+                                
+
+                              <label for="user" >User ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                              <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" name="email" required>
+                              <hr />
+                              <label for="pass">Password</label>
+                              <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" name="pswd" required>
+                              <br>
+                              <button type="submit" class="loginbutton">Login</button>
+                            </form>
+                            
+                          <p class="bottom">Dont't have an account?  <a class="bottom" href="{{url_for('register')}}"> Register here</a></p>
+                          </div>
+
+                        <!-- <button class="modal-close modal-exit ">X</button> -->
+                      </div>
+                    </div>
+
+
+
+
+    
+
+<script src="static/scripts/home.js"></script>
+</body>
+</html>

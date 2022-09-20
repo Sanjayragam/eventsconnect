@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Events_Connect</title>
+<link href="static/css/desk.css" rel="stylesheet">
+<link href="static/css/mobile.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="30">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+</head>
+<body>
+<!-- 
+  <script>
+  function startRefresh() {
+    $.get('', function(data) {
+        $(document.body).html(data);    
+    });
+    }
+    $(function() {
+        setTimeout(startRefresh,10000);
+    });
+  </script> -->
+
+  <div class="navbar">
+ 
+    <div class="logo-div">
+      <img class="logo" src="static/images/logob.svg">
+      <!-- <button onclick="myFunction()">Try</button> -->
+
+      <ul class="menu">
+        
+        <a href="index.html"> <button class="homebtn" >Home</button></a>
+        <a href="index.html"> <button class="homebtn">Support</button></a>
+         <button onclick="myFunction()" class="sidenav">Try</button>
+        <button class="loginbutn" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+      
+      </ul> 
+  </div>
+
+  
+    
+    
+  </div>
+
+<div class="outer1">
+
+        <!-- <div id="myDIV" class="events w3-animate-left inner1">
+          <div class="clubs-left">
+            <div class="club-left-head">
+              Technical Communities <button onclick="myFunction()" class="sidenav">Try</button>
+            </div>
+            <ul class="list2">
+              <li>IEEE SB GECI</li>
+              <li>Technoship Cell</li>
+              <li>FOSS Cell</li>
+              <li>Robovation Club</li>
+              <li>Placement Cell</li>
+              <li>Tinker Hub</li>
+              <li>Stellerio</li>
+              <li>ISTE</li>
+            </ul> 
+
+            <div class="club-left-head">
+
+              Arts Communities
+            </div>
+            <ul class="list2">
+              <li>Cassette</li>
+              <li>Trexx</li>
+              <li>Querencia</li>
+              <li>Obscura</li>
+              <li>Prathika</li>
+              <li>Prashnothra</li>
+            </ul> 
+
+            <div class="club-left-head">
+
+              Sports
+            </div>
+            <ul class="list2">
+              <li>Inizio</li>
+            </ul> 
+
+            <div class="club-left-head">
+              Others
+            </div>
+            <ul class="list2">
+              <li>NSS</li>
+              <li>Oasis</li>
+            </ul> 
+
+
+
+            
+          </div> 
+        </div> -->
+
+        <div class="inner2">
+          <div class="outer">
+                    <!-- <div class="nav">
+                          <div class="logo-div">
+                              <img class="logo" src="images/logob.svg">
+                              <button onclick="myFunction()">Try</button>
+                          </div>
+                  
+                  
+                          <div class="menu-top">
+                              <ul  class="menu">
+
+                                <a href="index.html"> <button class="homebtn" >Home</button></a>
+                                <a href="index.html"> <button class="homebtn">Support</button></a>
+                                <button class="loginbutn" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+                              
+                              </ul> 
+                          </div> 
+
+
+
+                    </div> -->
+
+                          <div class="home-title">
+                                <span class="hometitle t1">Upcoming</span><br>
+                                <span class="hometitle">and ongoing events</span>
+                                <div class="btncalhome">
+                                  <button class="calendarbtnhome" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">calendar</button>
+                                </div>
+                           </div>
+                   
+
+        
+
+
+                    
+          <div id="id01" class="modal">
+            
+            <div class="modal-content animate" >
+              <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+              </div>
+
+
+              <div class=" flex-r container">
+
+                
+                <!-- <div class="login-page">
+                  
+                  <div class="form">
+                    
+                    <img src="static/images/logob.svg" class="loginimage">
+  
+                  
+                      <p class="logintext">Login to geci connect<br>to add events</p>
+                  
+                      <form method="POST" onsubmit="alertfn()">
+                          <input class="input" type="text" name="username" placeholder="Username">
+                          <input class="input" type="password" name="password" placeholder="Password">
+                          <button type="submit" class="button is-success">
+                            Login
+                          </button>
+                    </form>
+                    
+                    
+                  </div>
+                </div> -->
+
+
+
+                <div class="container">
+                  <h2>User Login</h2>
+                  <form action="{{ url_for('login') }}" method="post">
+                      {% if mesage is defined and mesage %}
+                      <div class="alert alert-warning">{{ mesage }}</div>
+                    {% endif %}
+                    <div class="form-group">
+                      <label for="email">Email:</label>
+                      <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" name="email">
+                    </div>
+                    <div class="form-group">
+                      <label for="pwd">Password:</label>
+                      <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" name="pswd">
+                    </div>    
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <p class="bottom">Dont't have an account?  <a class="bottom" href="{{url_for('register')}}"> Register here</a></p>
+                  </form>
+                </div>
+                                  
+              
+              </div>
+
+
+
+              
+
+              <!-- <div class="cancelbtn" >
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+              </div> -->
+              
+
+
+
+
+
+
+
+
+            </div>
+
+
+          </div>
+
+
+
+          <div class="container w3-animate-bottom">
+
+            <table style="width:100%">
+              {% for item in data %}
+              <tr>
+                
+                <td>
+                  
+                  <div class="eventWrapper">
+                    <div class="event" id="{{item.color}}">
+
+                      <div class="event--date"><span></span>{{item.month}}  {{item.year}}<span style="background-color:rgba(0, 0, 255, 0)255, 255, 255); font-weight: 700; padding-top: 20px;">{{item.day}}</span><span></span>{{item.time}}<span>{{item.venue}}</span></div>
+                      <div class="event--content">
+
+                        <p class="event--content-ensemble"><IMG src="static/images/{{item.club}}.svg" style="height:35px; margin-right: 10px;">{{item.club}}</p>
+
+                        <h1 class="event-title">{{item.name}}</h1>
+                        </span><span>Speaker  | {{item.speaker}}</span>
+                        
+                        
+                      </div>	
+          
+                    </div>
+                  </div>
+
+                </td>
+              </tr>
+              {% endfor %}
+
+              
+            </table>
+  
+        
+    
+            </div>
+
+
+            
+
+  
+                </div>
+        </div>
+        
+</div>
+
+<style>
+
+#blue{
+  background: linear-gradient(90deg, rgba(18,200,193,1) 0%, rgba(11,132,202,1) 100%);
+}
+#green{
+  background: linear-gradient(90deg, rgba(37,202,166,1) 0%, rgba(151,202,11,1) 100%);
+}
+
+#pink{
+  background: linear-gradient(138deg, rgb(175, 7, 194) 0%, rgb(9, 88, 184) 100%);
+}
+
+#red{
+  background: linear-gradient(138deg, rgb(102, 2, 10) 0%, rgba(219,5,69,1) 100%);
+}
+
+#pink{
+  background: linear-gradient(138deg, rgb(217, 1, 134) 0%, rgba(246, 0, 74, 0.94) 100%);
+}
+
+#purple{
+  background: linear-gradient(138deg, rgb(168, 0, 198) 0%, rgb(100, 0, 231) 100%);
+  
+
+}
+
+#orange{
+  background: linear-gradient(138deg, rgb(240, 141, 2) 0%, rgba(219,5,69,1) 100%);
+}
+
+
+
+
+
+  .regbutton {
+    border: none;
+    color: rgb(0, 0, 0);
+    width: 100px;
+    padding: 8px;
+    border-radius: 50px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .regbutton1 {background-color: #ffffff;} /* Green */
+  </style>
+
+
+
+
+
+<script>
+  function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+
+
+  </script>
+
+
+
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+
+
+
+
+</body>
+</html>
+
+

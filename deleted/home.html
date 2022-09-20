@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link rel="stylesheet" href="static/css/home.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="static/css/desk.css" rel="stylesheet">
+    <link href="static/css/mobile.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <title>DotDash</title>
+</head>
+<body>
+
+    <div class="containerheader content1" style="background-color:rgba(0, 0, 255, 0)" id="myDI">
+        <div class="main">
+            <div class="instruction">
+                <h1 class="heading">Events Connect</h1>
+                <h4 class="subheading" >Everything at one place</h4>
+            </div>
+            <div class="btn">
+                <!-- <button id="button1" onclick="openlist()"> <i class="fa fa-bars"></i></button>&nbsp;&nbsp;&nbsp; -->
+                <!-- <button id="button" onclick="openlist()">Open Menu</button> -->
+                <button id="button" data-modal="modalone">Login</button>
+
+                <!-- <button onclick="myFunction()" data-modal="modalone">Login</button> -->
+                    
+                <!-- <button id="button1" onclick="myFunction()">Menu</button> -->
+                
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="containerheader" id="content2">
+        <div class="lists">
+            <ul>
+                <li><a class="alink"  href="#" onclick="closelist()">HOME</a></li>
+                <li><a class="alink" href="#" onclick="closelist()"data-modal="modalone" >Login</a></li>
+                <li><a class="alink" href="#" onclick="closelist()">clubs and<br> Communities</a></li>
+                <li><a class="alink" href="#" onclick="closelist()">DOWNLOADS</a></li>
+                <li><a class="alink" href="#" onclick="closelist()">CONTACT</a></li>
+            </ul>
+        </div>
+        <div class="mark">
+            <button id="cross" onclick="closelist()">
+                <span class="m1 m"></span>
+                <span class="m2 m"></span>
+            </button>
+        </div>
+    </div>
+
+
+                      <div class="home-title">
+                            <span class="hometitle t1">Upcoming</span><br>
+                            <span class="hometitle">and ongoing events</span>
+                            <div class="btncalhome">
+                                <!-- <button onclick="myFunction()" data-modal="modalone">Login</button>
+                              <button class="calendarbtnhome" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">calendar</button> -->
+                            </div>
+                       </div>
+               
+
+    
+
+
+
+                    <div class="modale" id="modalone" >
+
+                    
+
+                      <div class="modalbg modal-exit"></div>
+                      <div class="modalcontainer">
+                        {% if mesage is defined and mesage %}
+                        <div class="alert alert-warning">{{ mesage }}</div>
+                      {% endif %}
+  
+
+                   
+
+
+                        <div id="signin">
+                            <!-- <div ><img  id="logo" src="static/images/logob.svg"></div> -->
+                            <h1 class="logintitle">User Login</h1>
+                            <h1><a href="{{ url_for('adminlogin') }}"> admin </a></h1>
+
+                            
+                            <form id="loginform" action="{{ url_for('login') }}" method="post">
+                                
+
+                              <label for="user" >User ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                              <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" name="email" required>
+                              <hr />
+                              <label for="pass">Password</label>
+                              <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" name="pswd" required>
+                              <br>
+                              <button type="submit" class="loginbutton">Login</button>
+                            </form>
+                            
+                          <p class="bottom">Dont't have an account?  <a class="bottom" href="{{url_for('register')}}"> Register here</a></p>
+                          </div>
+
+                        <!-- <button class="modal-close modal-exit ">X</button> -->
+                      </div>
+                    </div>
+
+
+
+
+      <div class="container">
+
+        <table style="width:100%">
+          {% for item in data %}
+          <tr>
+            
+            <td>
+              
+              <div class="eventWrapper">
+                <div class="event" id="{{item.color}}">
+
+                  <div class="event--date"><span></span>{{item.monthword}}  {{item.year}}<span style="background-color:rgba(0, 0, 255, 0)255, 255, 255); font-weight: 700; padding-top: 20px;">{{item.day}}</span><span></span>{{item.time}}<span>{{item.venue}}</span></div>
+                  <div class="event--content">
+
+                    <p class="event--content-ensemble"><IMG src="static/images/{{item.club}}.svg" style="height:35px; margin-right: 10px;">{{item.club}}</p>
+
+                    <h1 class="event-title">{{item.name}}</h1>
+                    </span><span>Speaker  | {{item.speaker}}</span>
+                    
+                    
+                  </div>	
+      
+                </div>
+              </div>
+
+            </td>
+          </tr>
+          {% endfor %}
+
+          
+        </table>
+
+    
+
+        </div>
+
+
+        
+
+
+            </div>
+    </div>
+    
+</div>
+
+<style>
+
+#blue{
+background: linear-gradient(90deg, rgba(18,200,193,1) 0%, rgba(11,132,202,1) 100%);
+}
+#green{
+background: linear-gradient(90deg, rgba(37,202,166,1) 0%, rgba(151,202,11,1) 100%);
+}
+
+#pink{
+background: linear-gradient(138deg, rgb(175, 7, 194) 0%, rgb(9, 88, 184) 100%);
+}
+
+#red{
+background: linear-gradient(138deg, rgb(102, 2, 10) 0%, rgba(219,5,69,1) 100%);
+}
+
+#pink{
+background: linear-gradient(138deg, rgb(217, 1, 134) 0%, rgba(246, 0, 74, 0.94) 100%);
+}
+
+#purple{
+background: linear-gradient(138deg, rgb(168, 0, 198) 0%, rgb(100, 0, 231) 100%);
+
+
+}
+
+#orange{
+background: linear-gradient(138deg, rgb(240, 141, 2) 0%, rgba(219,5,69,1) 100%);
+}
+
+
+
+
+
+.regbutton {
+border: none;
+color: rgb(0, 0, 0);
+width: 100px;
+padding: 8px;
+border-radius: 50px;
+text-align: center;
+text-decoration: none;
+font-size: 16px;
+cursor: pointer;
+}
+
+.regbutton1 {background-color: #ffffff;} /* Green */
+</style>
+
+
+
+
+
+
+
+
+<script src="static/scripts/home.js"></script>
+</body>
+</html>

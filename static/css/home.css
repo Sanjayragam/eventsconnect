@@ -1,0 +1,325 @@
+
+
+
+
+
+.hometitle
+{
+
+    
+
+    font-style: normal;
+    font-size: 40px;
+    line-height: 50px;
+    color:black;
+    
+
+}
+
+
+.t1
+{
+    font-weight: 700;
+}
+
+
+
+
+.home-title
+{
+    
+    background-color: rgba(255, 255, 255, 0);
+    margin-left: 2rem;
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+    padding: 1rem;
+}
+
+
+.home-Event
+{
+    
+    background-color:#0d1117;
+    border: 0.5px solid rgb(52, 52, 52);
+    margin-left: 2rem;
+    margin-top: 2rem;
+    margin-right: 2rem;
+    border-radius: 15px;
+    padding: 1.5rem;
+    align-items: center;
+   
+}
+
+
+.homebtn
+{
+  background-color:#ffffff;
+  color: rgb(0, 0, 0);
+  border-radius: 50px;
+  font-family: montserrat;
+  font-weight: 500;
+  font-size: 15px;
+  text-align: center;
+  width: 50px;
+  border: none;
+}
+
+
+
+
+
+/*header_-----------------------------------------------*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+*{
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.content1{
+    
+    width: 100%; min-height: 100vh;
+    display: flex; align-items: center;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+  
+    /* background:url(https://s7.hostingkartinok.com/uploads/images/2014/08/739699d42336b58d73fddbc24aa6aa56.png); */
+    background-image: linear-gradient(45deg, black, transparent),
+    url("https://dkr0pu7ej5xex.cloudfront.net/wp-content/uploads/2017/04/24135159/Netflix-Background.jpg");
+
+
+}
+
+.subheading{
+
+    /* background-color: aqua; */
+    font-family: poppins;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    color: rgb(255, 255, 255);
+    font-weight: 50;
+
+}
+
+
+
+.heading{
+
+
+    font-family: poppins;
+    color: rgb(255, 255, 255);
+
+
+}
+
+
+.instruction h1{
+    font-size: 100px;
+    text-align: center;
+}
+.instruction h4{
+    font-size: 40px;
+    text-align: center;
+}
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 15px 0;
+}
+#button{
+    width: 200px; height: 50px;
+    font-size: 20px;
+    border: 3px solid rgb(0, 0, 0);
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    transition: 0.1s linear;
+    border-radius: 1000px;
+    font-family: 'Bebas Neue', cursive;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+#button1{
+    width: 50px; height: 50px;
+    font-size: 20px;
+    font-family: 'Bebas Neue', cursive;
+    border: 3px solid black;
+    background-color: black;
+    transition: 0.1s linear;
+    border-radius: 1000px;
+    cursor: pointer;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 1px;
+}
+
+
+#button1:hover{
+    background-color: transparent;
+    letter-spacing: 3px;
+    transform: scale(1.1);
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+    color: black;
+}
+
+
+
+#button:hover{
+    background-color: transparent;
+    letter-spacing: 3px;
+    transform: scale(1.1);
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+    color: black;
+}
+#content2{
+    width: 100%; min-height: 100vh;
+    position: absolute; top: 0;
+    left: -100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: 0.4s linear;
+}
+.alink {
+    text-decoration: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 25px;
+    letter-spacing: 2px;
+    transition: 0.1s linear;
+}
+.alink:hover{
+    color: rgba(255,255,255,0.8);
+}
+li{
+    padding: 10px 0;
+    list-style: none;
+    font-family: 'Bebas Neue', cursive;
+}
+.m{
+    width: 1px; height: 20px;
+    background-color: white;
+}
+.m1{
+    transform: rotate(45deg) translateX(0.5px);
+}
+.m2{
+    transform: rotate(-45deg);
+}
+#cross{
+    width: 30px; height: 30px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    background-color: rgba(255,255,255,0.5); border-radius: 50%;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    top: 40px; right: 40px;
+    transition: 0.1s linear;
+}
+#cross:hover{
+    background-color: rgba(255,255,255,0.2);
+}
+
+
+
+@media (min-width:320px)
+
+{
+
+
+    .content1{
+        width: 100%; min-height: 100vh;
+        padding: 1rem;
+        display: flex; align-items: center;
+        justify-content: center;
+        background-color: rgb(221, 221, 217);
+        /* background-image: url("geci.jpg"); */
+    }
+  
+
+    
+}
+ 
+
+
+
+/*header_-----------------------------------------------*/
+
+
+
+
+
+/* LOGO */
+
+#logo {
+  width: 100px;
+  height: auto;
+  margin-left:auto;
+  margin-right:auto;
+
+}
+
+/* H1 */
+
+.logintitle {
+  font-weight: 400;
+  font-family: roboto;
+  text-align: center;
+  padding-bottom: 1em;
+}
+
+/* FORM */
+
+form {
+  border: 1px solid black;
+  display: inline-block;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: left;
+}
+hr {
+  border: 0;
+  border-bottom: 1px solid black;
+  display: block;
+  margin: 10px -10px;
+}
+label {
+  font-weight: bold;
+}
+input {
+  border: 0;
+  font-size: 18px;
+  padding-left: 10px;
+}
+input:focus {
+  border: 0;
+  outline: 0;
+}
+
+/* A */
+a {
+  padding-bottom: .5em;
+  text-decoration: none;
+  color: #49E20E;
+}
+a:hover {
+  border-bottom: 1px solid;
+}
+
+
+
+.loginbutton{
+    width: 100px;
+    color: white;
+    padding: 5px;
+    border-radius: 8px;
+    margin-top: 20px;
+    background-color: #49E20E;
+}
+

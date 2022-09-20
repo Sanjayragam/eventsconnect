@@ -1,0 +1,348 @@
+<html>
+
+<head>
+
+    <title>Crud Application</title>
+    <link href="{{url_for('static', filename = 'css/bootstrap.min.css')}}" rel="stylesheet">
+<link rel="shortcut icon" href="{{url_for('static', filename = 'teacher.png' )}}">
+
+
+</head>
+
+<body>
+
+
+<div class="container">
+
+    <div class="well text-center">
+
+        <h1>Python Flask CRUD Web Application Development</h1>
+
+
+    </div>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col md-12">
+
+
+
+            <h2>Student List <button type="button" class="btn btn-success  pull-right" data-toggle="modal" data-target="#myModal">Add Student Data</button></h2>
+
+
+
+
+    {%with messages = get_flashed_messages()%}
+
+    {%if messages%}
+
+    {% for message in messages %}
+
+    <div class="alert alert-success alert-dismissable" role="alert">
+
+     <button type="button" class="close" data-dismiss="alert" aria-label ="close">
+
+         <span aria-hidden="true">&times;</span>
+
+     </button>
+        {{message}}
+
+
+    </div>
+
+
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+
+
+
+
+            <table class="table table-striped">
+
+
+                <tr>
+              <!-- <th>Serial</th> -->
+              <th>club</th>
+              <th>Name</th>
+              <th>date</th>
+              <th>time</th>
+              <th>venue</th>
+              <th>speaker</th>
+              <th>color</th>
+              <th>status</th>
+              <th>Action</th>
+
+
+          </tr>
+
+
+
+
+
+                {% for row in students %}
+                <tr>
+                    <!-- <td>{{row.0}}</td> -->
+                    <td>{{row.1}}</td>
+                    <td>{{row.2}}</td>
+                    <td>{{row.3}}</td>
+                    <td>{{row.8}}</td>
+                    <td>{{row.9}}</td>
+                    <td>{{row.10}}</td>
+                    <td>{{row.11}}</td>
+                    <td>{{row.12}}</td>
+                    <td>
+
+
+               <a href="/update/{{row.0}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{row.0}}">Edit</a>
+                <a href="/delete/{{ row.0 }}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure For Delete?')">Delete</a>
+
+                    </td>
+
+                </tr>
+
+                <div id="modaledit{{row.0}}" class="modal fade" role="dialog">
+
+
+   <div class="modal-dialog">
+
+
+      <div class="modal-content">
+
+
+         <div class="modal-header">
+
+
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+
+            <h4 class="modal-title">Update Information</h4>
+
+
+         </div>
+
+
+         <div class="modal-body">
+
+
+            <form action="{{ url_for('update') }}" method="POST">
+
+
+               <div class="form-group">
+
+
+                  <label>Name:</label>
+                   <input type="hidden"  name="id" value="{{row.0}}">
+
+                  <input type="text" class="form-control" name="name" value="{{row.2}}">
+
+
+               </div>
+
+               <div class="form-group">
+
+
+                  <label>time:</label>
+
+                  <input type="text" class="form-control" name="time" value="{{row.8}}">
+
+
+               </div>
+
+
+
+               <div class="form-group">
+
+
+                  <label>venue:</label>
+
+                  <input type="text" class="form-control" name="venue" value="{{row.9}}">
+
+
+               </div>
+
+
+               <div class="form-group">
+
+
+                  <label>speaker:</label>
+
+                  <input type="text" class="form-control" name="speaker" value="{{row.10}}">
+
+
+               </div>
+
+
+               <div class="form-group">
+
+
+                  <label>status:</label>
+
+                  <input type="text" class="form-control" name="status" value="{{row.12}}">
+
+
+               </div>
+
+
+               <div class="form-group">
+
+
+                  <button class="btn btn-primary" type="sbumit">Update</button>
+
+
+               </div>
+
+
+            </form>
+
+
+         </div>
+
+
+         <div class="modal-footer">
+
+
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+
+         </div>
+
+
+      </div>
+
+
+   </div>
+
+
+</div>
+
+
+                {% endfor  %}
+
+
+                </tbody>
+
+
+            </table>
+
+
+        </div>
+
+
+<!-- Modal -->
+
+
+<div id="myModal" class="modal fade" role="dialog">
+
+
+   <div class="modal-dialog">
+
+
+      <div class="modal-content">
+
+
+         <div class="modal-header">
+
+
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+
+            <h4 class="modal-title">Please Insert Data</h4>
+
+
+         </div>
+
+
+       
+
+         <div class="modal-footer">
+
+
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+
+         </div>
+
+
+      </div>
+
+
+   </div>
+
+
+
+<script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+
+<script type="text/javascript" src="{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
+
+<script>
+
+   $('#calendarFull').fullCalendar({
+       header: {
+           left: 'prev,next today',
+           center: 'title',
+           right: 'month,agendaWeek,agendaDay'
+       },
+       defaultView: 'month',
+       editable: true,
+       eventSources: [
+         {
+           events: [
+             {
+               title: "event3",
+               start: "2019-03-09T12:30:00"
+             }
+           ],
+           color: "black", // an option!
+           textColor: "yellow" // an option!
+         }
+       ],
+       select: function( start, end, jsEvent, view ) {
+           // set values in inputs
+           $('#event-modal').find('input[name=date]').val(
+               start.format('DD-MM-YYYY')
+           );
+           $('#event-modal').find('input[name=evtEnd]').val(
+               end.format('YYYY-MM-DD HH:mm:ss')
+           );
+           
+           // show modal dialog
+           $('#event-modal').modal('show');
+           
+           /*
+           bind event submit. Will perform a ajax call in order to save the event to the database.
+           When save is successful, close modal dialog and refresh fullcalendar.
+           */
+           /*
+           $("#event-modal").find('form').on('submit', function() {
+               $.ajax({
+                   url: 'yourFileUrl.php',
+                   data: $("#event-modal").serialize(),
+                   type: 'post',
+                   dataType: 'json',
+                   success: function(response) {
+                       // if saved, close modal
+                       $("#event-modal").modal('hide');
+                       
+                       // refetch event source, so event will be showen in calendar
+                       $("#calendar").fullCalendar( 'refetchEvents' );
+                   }
+               });
+           });*/
+       },
+       selectHelper: true,
+       selectable: true,
+       snapDuration: '00:10:00'
+   });
+   
+   
+   </script>
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.1.1/fullcalendar.min.js'></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script><script  src="./script.js"></script>
+   
+</body>
+</html>

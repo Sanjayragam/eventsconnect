@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<div class="box">
+    <span></span>
+    <img src="https://img.icons8.com/color/48/000000/error.png" alt="">
+    <h2>Event can't be added</h2>
+    <p>An event is already added in the selected slot. Select another slot or request for cancellation.</p>
+    <a href="{{ url_for('login') }}" "><button>Back to home</button></a>
+  </div>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Barlow|Barlow+Condensed:700');
+body{
+  font-size: 20px;
+  height: 100vh;
+  background-color: black;
+}
+.box {
+  background: #0d0e0e00;
+  margin: 5% auto;
+  padding: 3%;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  border-radius: 5px ;
+  position: relative;
+}
+
+img {
+  height: 48px;
+  width: 48px;
+  margin: 0 auto -10px auto;
+}
+h2 {
+  font-family: 'Barlow Condensed';
+  text-align: center;
+  color: gold;
+}
+
+p {
+  font-family: 'Barlow';
+  color: grey;
+  font-weight: 500;
+  margin: -8px auto 50px auto;
+}
+
+button {
+  font-family: 'Barlow';
+  border: none;
+  outline:none;
+  width :300px;
+     height: 50px;
+     font-size: 20px;
+     text-align: center;
+     
+     color: rgba(0, 0, 0, 0.9);
+     border-radius: 10px;
+     background-color: rgb(233, 191, 0);
+
+}
+
+span{
+
+  height: 24px;
+  width: 24px;
+  padding:5px;
+  border-radius:10px;
+  position: absolute;
+  right:20px;
+  top:20px;
+}
+
+html {
+overflow: scroll;
+overflow-x: hidden;
+}
+::-webkit-scrollbar {
+width: 0;
+background: transparent; 
+}
+
+
+  </style>
+</body>
+</html>

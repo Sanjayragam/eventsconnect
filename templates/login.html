@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1"> 
+      <meta charset="UTF-8">
+  <title>Login</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="main-wrapper">
+  <div class="text-content">
+    <!-- <p class="text instagram">Login</p> -->
+    <h1 class="heading-primary">Log in<span class="span-blue">.</span></h1>
+    <p class="text">to eventsconnect</p>
+
+            <!-- <a href="{{ url_for('adminlogin') }}">
+            <i class="fa fa-user" aria-hidden="true"> </i>&nbsp;&nbsp;&nbsp;
+            <p class="adminbutton">Login as admin.</p>
+            </a> -->
+
+            <a class="adminloginlink" href="{{ url_for('adminlogin') }}">
+            <button class="adminbutton" ><i class="fa fa-user" aria-hidden="true" style="color:#2196f3;"></i>&nbsp;&nbsp;admin</button>
+            </a>
+            <div class="line-breaker">
+              <span class="line"></span>
+              <span>or</span>
+              <span class="line"></span>
+            </div>
+       
+    
+  
+
+        <form class="login_form" action="{{ url_for('login') }}" method="post">
+          
+          <input class="inputlogin" type="email" name="email" placeholder="email"  ><br>
+		      <input class="inputlogin" type="password" name="password" placeholder="password"  ><br>
+
+          <input type="submit" class="loginbutton" name="login" value="Login">
+          <p class="signuplink">Not a member? <a href="{{ url_for('register') }}">Sign up</p>
+
+
+        </form>
+
+
+        </div>
+   
+
+  <div data-slide="slide" class="slide">
+    <div class="slide-items">
+
+      <img src="static/images/story1.jpg" >
+      <img src="static/images/story1.jpg">
+      <img src="static/images/story1.jpg">
+
+    </div>
+
+    <nav class="slide-nav">
+      <div class="slide-thumb"></div>
+      <button class="slide-prev">Previous</button>
+      <button class="slide-next">Next</button>
+    </nav>
+
+  </div>
+</div>
+
+<script src="{{url_for('static', filename='login.js')}}"></script>
+
+
+</body>
+</html>
+
+

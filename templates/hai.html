@@ -1,0 +1,760 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<meta charset="UTF-8">
+  <title>{{session.name}} </title>
+  <link rel="stylesheet" href="static/css/test.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+  <link href="static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/css/calendar.css" rel="stylesheet">
+  <!-- <link rel="shortcut icon" href="{{url_for('static', filename = 'teacher.png' )}}"> -->
+
+  
+</head>
+<body>
+  
+
+
+
+
+  <div class="modal fade" id="event-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color:rgb(0, 153, 255);">
+    <div class="modal-dialog">
+  
+  
+      
+      <main>
+      
+        <form action="/events" method = "POST">
+          <p><b>Add events</b></p>
+          <div id="formPad">
+            <input type = "text" name = "club"  value="{{session.name}}" readonly style="display:none">
+            <input type = "text" name = "name"  placeholder="event name" required>
+            <input type = "text" name = "date"  value="date" readonly style="display:none;">
+            <input type = "text" name = "time"  placeholder="time*" required>
+            <input type = "text" name = "endtime"  placeholder="endingtime*" required>
+            <input type = "text" name = "venue"  placeholder="venue*" required>
+            <input type = "text" name = "speaker"  placeholder="speaker*" required>
+  
+              <select name="color" id="color" required>
+      
+                <option value="red">red</option>
+                <option value="blue">blue</option>
+                <option value="green">green</option>
+                <option value="pink">pink</option>
+                <option value="purple">purple</option>
+              </select>
+  
+              <input type = "text" name = "status"  value="pending" id="status" readonly style="display:none;">
+              <input type = "text" name = "requests"  value="no requests" readonly style="display:ne;">
+    
+    
+        
+            <input class="button" type="submit" value="add event"  style="background-color:rgb(0, 153, 255);"/>
+            <p>
+              By clicking the button, you are agreeing to our
+              <a href="#">Terms and Services</a>
+            </p>
+          </div>
+        </form>
+      </main>
+  
+  
+      <div class="form_wrapper" style="display:none;">
+        <div class="form_container">
+          <div class="title_container">
+            <h2>Responsive Registration Form</h2>
+            <input type="text" name = "date" value="date" readonly>
+  
+      
+  
+            
+          </div>
+          <div class="row clearfix" >
+            <div class="">
+              <form action="/events" method = "POST" class="signup">
+                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-text-width"></i></span>
+                  <input type = "text" name = "name"  placeholder="event name" required>
+                </div>
+    
+            </div>
+            <div class="row" style="display: none;">
+              <input type = "text" name = "club"  value="{{session.name}}">
+            </div>
+    
+            <div class="row">
+              <input type = "text" name = "date"  value="date">
+             
+            </div>
+                <div class="row clearfix">
+                  <div class="col_half">
+                    <div class=""> <span><i aria-hidden="true" class=""></i></span>
+                      <label>Time</label>
+                      <input type = "time" name = "time"  placeholder="time*" required>
+                    </div>
+                  </div>
+
+                  <div class="col_half">
+                    <div class=""> <span><i aria-hidden="true" class=""></i></span>
+                      <label>Time</label>
+                      <input type = "time" name = "endtime"  placeholder="Ending time*" required>
+                    </div>
+                  </div>
+  
+                  <div class="col_half">
+                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-location"></i></span>
+                      <input type = "text" name = "venue"  placeholder="venue*" required>
+                    </div>
+                  </div>
+                
+                </div>
+  
+                <div class="input_field"> <span><i aria-hidden="true" class=""></i></span>
+    
+                  <input type = "text" name = "speaker"  placeholder="speaker*" required>
+                </div>
+  
+                
+                
+                    <div class="input_field select_option">
+                      <select name="color" id="color" required>
+              
+                        <option value="red">red</option>
+                        <option value="blue">blue</option>
+                        <option value="green">green</option>
+                        <option value="pink">pink</option>
+                        <option value="purple">purple</option>
+                      </select>
+                      <div class="select_arrow"></div>
+                    </div>
+  
+                    <div class="input_field select_option">
+                      <select name="status" id="status" required>
+                        <option>Status</option>
+                        <option value="pending">pending</option>
+                        <option value="approved">approved</option>
+                      </select>
+                      <div class="select_arrow"></div>
+                    </div>
+                
+                    <input class="button" type="submit" value="add event" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <p class="credit">Developed by <a href="http://www.designtheway.com" target="_blank">Design the way</a></p> -->
+  
+  
+  </div>
+<div class="profilecont">
+
+  <div class="banner">
+    <div class="ava">
+      <img src="https://eu.ui-avatars.com/api/?background=0D8ABC&color=fff&name=John+Doe&size=100" alt="ava" />
+    </div>
+    <h4>{{session.name}}<span><a href="{{ url_for('logout') }}"> Logout</a></span></h4>
+    <div class="btns">
+      <div class="btn addusr">
+        <i class="fas fa-user-plus"></i>
+        <a class="eventsadd" href="#open-lightbox"><button class="eventsadd">Add events</button></a>
+        
+        <!-- <span><a class="bottom" href="{{url_for('test')}}"> Register here</a></span> -->
+      </div>
+    </div>
+  </div>
+
+ 
+
+     
+            <div id='calendarFull' ></div>
+            <br>
+          </div>
+        </div>
+
+
+  <div class="content">
+    <div class="count">
+      <div class="side">
+        <br><br><br>
+        <h5>Details</h5>
+        <p></p>
+        <h5>Events Scheduled - {{curcount}}</h5>
+        <p></p>
+        <h5>Approved - {{counta}}</h5>
+        <p>Approval Pending - {{countp}}</p>
+      </div>
+    </div>
+    <div class="main">
+      <h5>Your Events</h5>
+      
+      <button onClick="window.location.reload();" class="refresh"><i class="fa fa-refresh" aria-hidden="true" ></i>&nbsp;&nbsp;Refresh</button>
+      <table>
+        <style>
+          .refresh{
+
+            background-color:rgb(255, 255, 255); 
+            border:none; padding: 10px; 
+            font-size: 18px;
+            }
+        </style>
+        {% for row in students %}
+        <tr>
+          <td width="90%">
+        <ul class="posts">
+        <li class="general">
+          <a href="#">
+            <div class="icon">
+              <img src="static/images/{{row.12}}.svg" width="25px">
+            </div>
+            <div class="txt">
+              <h5>{{row.2}}</h5>
+              <div class="sub">
+                <strong>{{row.12}}</strong>
+                <span>&nbsp;-&nbsp;</span>
+                <span>{{row.7}} {{row.4}} {{row.6}}, {{row.9}} , {{row.10}}</span>
+                <span>&nbsp;&nbsp;</span>
+                <span>
+                  <!-- <i class="fas fa-comments"></i> -->
+                  <!-- &nbsp;3 Replies -->
+                </span>
+                
+                
+              </div>
+            </div>  
+          </a>
+        </li>
+        
+      </ul>
+    </td>
+
+    <td width="10%">
+      <a href="/update/{{row.0}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{row.0}}">Edit</a>
+      <a href="/delete/{{ row.0 }}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure For Delete?')">Delete</a>
+    </td>
+  </tr>
+
+  <div id="modaledit{{row.0}}" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+       <div class="modal-content">
+          <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal">&times;</button>
+             <h4 class="modal-title">Update Information</h4>
+          </div>
+          <div class="modal-body">
+             <form action="{{ url_for('update') }}" method="POST">
+                <div class="form-group">
+                   <label>Name:</label>
+                    <input type="hidden"  name="id" value="{{row.0}}">
+ 
+                   <input type="text" class="form-control" name="name" value="{{row.2}}">
+                </div>
+                <div class="form-group">
+                   <label>time:</label>
+                   <input type="text" class="form-control" name="time" value="{{row.8}}">
+                </div>
+                <div class="form-group">
+                   <label>venue:</label>
+                   <input type="text" class="form-control" name="venue" value="{{row.9}}">
+                </div>
+                <div class="form-group">
+                   <label>speaker:</label>
+                   <input type="text" class="form-control" name="speaker" value="{{row.10}}">
+                </div>
+                <div class="form-group">
+                   <label>status:</label>
+                   <input type="text" class="form-control" name="status" value="{{row.12}}" readonly>
+                </div>
+                <div class="form-group">
+                   <button class="btn btn-primary" type="sbumit" onclick="alertfn()">Update</button>
+                </div>
+             </form>
+          </div>
+          <div class="modal-footer">
+             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+       </div>
+    </div>
+ </div>
+
+
+      {% endfor  %}
+     </table>
+    </div>
+  
+ 
+   
+  </div>
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+<div class="container">
+
+  <div class="well text-center">
+
+      <h1>request cancellation</h1>
+
+      <div>
+          
+      </div>
+
+
+  </div>
+
+<div class="container">
+
+  <div class="row">
+
+      <div class="col md-12">
+
+
+
+          <!-- <h2>Student List <button type="button" class="btn btn-success  pull-right" data-toggle="modal" data-target="#myModal">Add Student Data</button></h2> -->
+
+
+
+
+  {%with messages = get_flashed_messages()%}
+
+  {%if messages%}
+
+  {% for message in messages %}
+
+  <div class="alert alert-success alert-dismissable" role="alert">
+
+   <button type="button" class="close" data-dismiss="alert" aria-label ="close">
+
+       <span aria-hidden="true">&times;</span>
+
+   </button>
+      {{message}}
+
+
+  </div>
+
+
+  {%endfor%}
+  {%endif%}
+  {%endwith%}
+
+
+
+
+          <table class="table table-striped">
+
+
+              <tr>
+            <!-- <th>Serial</th> -->
+            <th>club</th>
+            <th>Name</th>
+            <th>date</th>
+            <th>time</th>
+            <th>end time</th>
+            <th>venue</th>
+            <th>speaker</th>
+     
+            <th>Action</th>
+
+
+        </tr>
+
+
+
+
+
+              {% for row in dataall %}
+              <tr>
+                  <!-- <td>{{row.0}}</td> -->
+                  <td>{{row.1}}</td>
+                  <td>{{row.2}}</td>
+                  <td>{{row.3}}</td>
+                  <td>{{row.8}}</td>
+                  <td>{{row.14}}</td>
+                  <td>{{row.9}}</td>
+                  <td>{{row.10}}</td>
+               
+                  <td>
+
+
+             <a href="/updatests/{{row.0}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit1{{row.0}}">request</a>
+              <!-- <a href="/delete/{{ row.0 }}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure For Delete?')">Delete</a> -->
+
+                  </td>
+
+              </tr>
+
+              <div id="modaledit1{{row.0}}" class="modal fade" role="dialog">
+
+
+
+
+                  
+ <div class="modal-dialog">
+
+
+    <div class="modal-content">
+
+
+       <div class="modal-header">
+
+
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+
+          <h4 class="modal-title">request</h4>
+
+
+       </div>
+
+
+       <div class="modal-body">
+
+
+          <form action="{{ url_for('updatests') }}" method="POST">
+
+
+
+            <div class="form-group">
+
+
+              <label>club:</label>
+               <input type="hidden"  name="id" value="{{row.0}}">
+
+              <input type="text" class="form-control" name="clubcancel" value="{{row.1}}">
+
+              <div class="form-group">
+
+
+                <label>requested by:</label>
+                 <input type="hidden"  name="id" value="{{row.0}}">
+  
+                <input type="text" class="form-control" name="requestedby" value="{{session.name}}">
+
+
+           </div>
+
+             <div class="form-group">
+
+
+                <label>Name:</label>
+                 <input type="hidden"  name="id" value="{{row.0}}">
+
+                <input type="text" class="form-control" name="namecancel" value="{{row.2}}">
+
+
+             </div>
+
+             <div class="form-group">
+
+
+                <label>time:</label>
+
+                <input type="text" class="form-control" name="timecancel" value="{{row.8}}">
+
+
+             </div>
+
+
+
+             <div class="form-group">
+
+
+                <label>requests:</label>
+
+                <input type="text" class="form-control" name="requestscancel" value="cancel cheyyuo">
+
+
+             </div>
+
+
+             <div class="form-group">
+
+
+              <label>date:</label>
+
+              <input type="text" class="form-control" name="datecancel" value="{{row.3}}">
+
+
+           </div>
+
+
+
+             <div class="form-group">
+
+
+                <button class="btn btn-primary" type="sbumit">Update</button>
+
+
+             </div>
+
+
+          </form>
+
+
+       </div>
+
+
+       <div class="modal-footer">
+
+
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+
+       </div>
+
+
+    </div>
+
+
+ </div>
+
+
+</div>
+
+
+              {% endfor  %}
+
+
+              </tbody>
+
+
+          </table>
+
+
+      </div>
+
+
+
+
+        
+<script>
+  function alertfn() {
+    alert("I am an alert box!");
+  }
+  </script>
+
+
+      <style>
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar {
+    width: 0;
+    background: transparent; 
+  }
+  body{
+    margin: 0;
+  }
+
+        </style>      
+
+<script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+
+<script type="text/javascript" src="{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.1.1/fullcalendar.min.js'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script><script  src="./script.js"></script>
+<script>
+
+$('#calendarFull').fullCalendar({
+    // header: {
+    //     left: 'prev,next today',
+    //     center: 'title',
+    //     right: 'month,agendaWeek,agendaDay'
+    // },
+    defaultView: 'month',
+    editable: true,
+    eventSources: [
+      {
+        events: [
+          {
+            title: "event3",
+            start: "2019-03-09T12:30:00"
+          }
+        ],
+        color: "black", // an option!
+        textColor: "yellow" // an option!
+      }
+    ],
+    select: function( start, end, jsEvent, view ) {
+        // set values in inputs
+        $('#event-modal').find('input[name=date]').val(
+            start.format('DD-MM-YYYY')
+            
+        );
+        $('#event-modal').find('input[name=evtEnd]').val(
+            end.format('YYYY-MM-DD HH:mm:ss')
+        );
+        
+        // show modal dialog
+        $('#event-modal').modal('show');
+         var s='19-08-2001';
+        document.getElementById("demo").innerHTML = s;
+        
+        /*
+        bind event submit. Will perform a ajax call in order to save the event to the database.
+        When save is successful, close modal dialog and refresh fullcalendar.
+        */
+        /*
+        $("#event-modal").find('form').on('submit', function() {
+            $.ajax({
+                url: 'yourFileUrl.php',
+                data: $("#event-modal").serialize(),
+                type: 'post',
+                dataType: 'json',
+                success: function(response) {
+                    // if saved, close modal
+                    $("#event-modal").modal('hide');
+                    
+                    // refetch event source, so event will be showen in calendar
+                    $("#calendar").fullCalendar( 'refetchEvents' );
+                }
+            });
+        });*/
+    },
+    selectHelper: true,
+    selectable: true,
+    snapDuration: '00:10:00'
+});
+
+
+</script>
+
+
+<style>
+  .lightbox-window {
+  position: fixed;
+  background-color: rgba(50, 50, 50, 0.95);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+.lightbox-window:target {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+.lightbox-window > div {
+  height: 90vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2em;
+  background: white;
+}
+.lightbox-close {
+  color: #aaa;
+  line-height: 50px;
+  font-size: 80%;
+  position: absolute;
+  right: 10px;
+  text-align: center;
+  top: 0;
+  width: 80px;
+  text-decoration: none;
+}
+.lightbox-close:hover {
+  color: black;
+}
+/* Demo Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  line-height: 1.5;
+  background-color: #f9f9f9;
+}
+.omdbtn {
+  color: #000;
+  background: white;
+  line-height: 50px;
+  margin: 100px auto 0 auto;
+  width: 220px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+}
+.btn:hover {
+  color: black;
+}
+.webgarten {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+}
+
+
+@media only screen and (max-width: 600px) 
+{
+  #calendarFull{
+
+width: 100%;
+}
+
+.lightbox-window > div {
+  width: 100%;
+
+}
+
+.content{
+    display: block;
+  }
+
+
+}
+
+
+@media only screen and (min-width: 992px)
+{ 
+  #calendarFull{
+
+width: 100%;
+}
+
+.content{
+    display: flex;
+  }
+
+
+}
+
+.count{
+    width: 20%;
+    /* background-color: rgba(202, 3, 3, 0.979); */
+  }
+  .content{
+    /* background-color: rgb(15, 15, 15); */
+    background-color: rgb(255, 255, 255);
+
+
+  }
+
+  .main{
+    width: 70%;
+  }
+
+
+</style>
+
+
+</body>
+</html>

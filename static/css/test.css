@@ -1,0 +1,488 @@
+body{
+  font-family: sans-serif
+}
+
+
+.refresh{
+
+  background-color:rgb(255, 255, 255); 
+  border:none; padding: 10px; 
+  font-size: 18px;
+}
+
+.lightbox-window {
+  position: fixed;
+  background-color: rgba(50, 50, 50, 0.95);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+.lightbox-window:target {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+.lightbox-window > div {
+  height: 90vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2em;
+  background: white;
+}
+.lightbox-close {
+  color: #aaa;
+  line-height: 50px;
+  font-size: 80%;
+  position: absolute;
+  right: 10px;
+  text-align: center;
+  top: 0;
+  width: 80px;
+  text-decoration: none;
+}
+.lightbox-close:hover {
+  color: black;
+}
+.omdbtn {
+  color: #000;
+  background: white;
+  line-height: 50px;
+  margin: 100px auto 0 auto;
+  width: 220px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+}
+.btn:hover {
+  color: black;
+}
+.webgarten {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+}
+
+
+
+
+
+
+
+
+
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+.profilecont {
+  background-color: #ffffff;
+  height: 100vh;
+
+
+}
+
+.imgcircle{
+  width: 10px;
+}
+
+
+.eventsadd{
+    background-color: #08090a00;
+    border: none;
+    color: white;
+}
+
+.statusimg{
+  width: 10px;
+}
+
+
+/*navbar---------------------------------------*/
+.profilecont header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  color: #b6b6b7;
+  z-index: 99;
+  background-color: rgba(255, 255, 255, 0.65);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0px 45px;
+}
+.profilecont header .menu {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+.profilecont header .menu li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+.profilecont header .menu li a {
+  color: #b6b6b7;
+  text-decoration: 0;
+  padding: 12px 7px;
+  font-size: 0.75em;
+  transition: 280ms ease;
+}
+.profilecont header .menu li a:hover {
+  color: #e7e7e7;
+}
+.profilecont header .home {
+  cursor: pointer;
+  padding: 10px 10px;
+  background-color: rgba(4, 4, 4, 0);
+  transition: 240ms ease;
+}
+.profilecont header .home:hover {
+  color: #e7e7e7;
+  background-color: rgba(4, 4, 4, 0.45);
+}
+.profilecont .banner {
+ /* background-color: #00cdf6; */
+ background-color: #238ae6;
+ color: ;
+  width: 100%;
+  height: 130px;
+
+  position: relative;
+}
+.profilecont .banner .btns {
+  position: absolute;
+  right: 45px;
+  bottom: 20px;
+  display: flex;
+}
+
+
+
+/* add button--------------------------------------------------------*/
+.profilecont .banner .btns .btn {
+  font-size: 0.8em;
+  font-weight: 400;
+  color: #b6b6b7;
+  background-color: rgba(14, 14, 12, 0.35);
+  padding: 12px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 280ms ease;
+  transform: scale(1);
+}
+.profilecont .banner .btns .btn:hover {
+  color: #cecfcf;
+  background-color: rgba(12, 13, 14, 0.45);
+  transform: scale(0.97);
+}
+.profilecont .banner .ava {
+  position: absolute;
+  width: 90px;
+  left: 45px;
+  bottom: -25px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+}
+.profilecont .banner .ava img {
+  width: 100%;
+}
+
+
+
+/* profile name-------------------------------------*/
+.profilecont .banner h4 {
+  color: rgb(255, 255, 255);
+  margin: 0;
+  font-weight: 400;
+  font-size: 1.35em;
+  position: absolute;
+  bottom: 20px;
+  left: 160px;
+  display: flex;
+  align-items: center;
+}
+
+
+
+/*lgout button-----------------------------------------------*/
+.profilecont .banner h4 span {
+  font-size: 1em;
+  margin-left: 5px;
+  color: #ffffff;
+  background-color: rgba(12, 13, 14, 0.45);
+  text-decoration: none;
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+
+
+/*recent post-----------------------------------------------*/
+
+.profilecont .content {
+  color: rgb(0, 0, 0);
+  height: 100%;
+  padding: 45px 45px;
+}
+.profilecont .content h5 {
+  font-weight: 400;
+  font-size: 1.25em;
+  margin: 0;
+  margin-bottom: 12px;
+}
+
+.profilecont .content .posts {
+  margin: 0;
+  padding: 0;
+  margin-right: 30px;
+}
+.profilecont .content .posts li {
+  list-style: none;
+  margin: 4px 0;
+}
+
+
+
+
+
+
+
+/* event divison---------------------------------------------*/
+.profilecont .content .posts li a {
+text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  font-size: 18px;
+  height: 80px;
+
+  padding: 8px 18px;
+  transition: 320ms ease;
+}
+.profilecont .content .posts li a:hover {
+  background-color: #6d6d6d29;
+}
+.profilecont .content .posts li a .icon {
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  margin-right: 18px;
+}
+.profilecont .content .posts li a .icon i {
+  font-size: 1.5em;
+  color: #000000;
+}
+.profilecont .content .posts li a .txt {
+  display: flex;
+  flex-direction: column;
+}
+
+/*event name/////////////////////////*/
+.profilecont .content .posts li a .txt h5 {
+  font-size: 1.15em;
+  margin-bottom: 4px;
+  color: #010101;
+}
+.profilecont .content .posts li a .txt .sub {
+  display: flex;
+  align-items: flex-end;
+}
+.profilecont .content .posts li a .txt .sub span, body .profilecont .content .posts li a .txt .sub strong {
+  font-size: 0.75em;
+  color: #636465;
+  font-weight: 400;
+}
+.profilecont .content .posts li.coding .icon i {
+  color: #f97d10;
+}
+.profilecont .content .posts li.coding strong {
+  color: #f97d10 !important;
+}
+.profilecont .content .posts li.crypto .icon i {
+  color: #4abbf3;
+}
+.profilecont .content .posts li.crypto strong {
+  color: #4abbf3 !important;
+}
+.profilecont .content .posts li.design .icon i {
+  color: #ba3ffc;
+}
+.profilecont .content .posts li.design strong {
+  color: #ba3ffc !important;
+}
+.profilecont .content .posts li.general .icon i {
+  color: #259676;
+}
+.profilecont .content .posts li.general strong {
+  color: #259676 !important;
+}
+.profilecont .content .side {
+  width: 270px;
+  flex-shrink: 0;
+}
+.profilecont .content .side p {
+  color: #5a5a5b;
+  font-size: 0.9em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Styling the modal and backdrop */
+
+dialog {
+  width: 100%;
+ 
+  padding: 0;
+  background: rgb(255, 255, 255);
+  border-radius: 8px;
+  border: 1px solid #dedede;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  animation: scale-in 0.4s ease-out;
+}
+
+dialog::backdrop {
+  background: radial-gradient(
+    circle,
+    rgba(238, 118, 116, 0.5) 0%,
+    rgba(238, 118, 116, 0.7) 100%
+  );
+  cursor: pointer;
+}
+
+/* Styling inside of the modal */
+
+dialog header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+  background: #fff;
+  border-bottom: 1px solid rgba(238, 118, 116, 1);
+}
+
+dialog footer {
+  border-top: 1px solid rgba(238, 118, 116, 1);
+}
+
+dialog > * {
+  padding: 24px;
+}
+
+dialog p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* bouncy animation because i can */
+@keyframes scale-in {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* some basic styling (added to the bottom for convenience) */
+* {
+  box-sizing: border-box;
+}
+
+.containercal {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+/* quick and dirty button styling, forgive me ;) */
+/* .btn {
+  display: inline-block;
+  font-family: "Merriweather", sans-serif;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  padding: 20px 50px;
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  letter-spacing: 2px;
+  font-weight: 700;
+  background: #987284;
+  border-color: #987284;
+  color: #fff;
+  transition: all 0.24s;
+}
+
+.btn-primary:hover,
+.btn-primary:active {
+  background-color: #855F71;
+  border-color: #855F71;
+}
+
+.btn-primary-outline {
+  padding: 10px 25px;
+  font-size: 1.2rem;
+  letter-spacing: 0;
+  color: #987284;
+  background: #fff;
+  border-width: 2px;
+  border-color: #987284;
+  border-radius: 6px;
+  transition: all 0.24s;
+}
+
+.btn-primary-outline:hover,
+.btn-primary-outline:active {
+  border-color: #855F71;
+}
+
+.btn-icon {
+  padding: 0;
+  background: transparent;
+  width: 24px;
+  height: 24px;
+  color: #987284;
+}
+ */

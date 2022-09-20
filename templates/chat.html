@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>{{session.name}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link href="static/css/desk2.css" rel="stylesheet">
+
+</head>
+<body>
+
+
+  
+<!-- partial:index.partial.html -->
+<div class="main">
+  <div class="left">
+    <ul>
+      <li class="menu-heading">Dashboard</li>
+      <li class="active"><a data-toggle="tab" href="#projects"><i class="fa fa-table fa-lg"></i> Your events</a></li>
+      <!-- <li><a data-toggle="tab" href="#user-profile"><i class="fa fa-street-view fa-lg"></i>Home</a></li> -->
+      <li><a data-toggle="tab" href="#landing"><i class="fa fa-plus" aria-hidden="true" ></i>Add events</a></li>
+      <i class="fa-solid fa-chart-line"></i>
+      <!-- <li><a data-toggle="tab" href="#candidates"><i class="fa fa-users fa-lg"></i> update</a></li>
+      <li><a data-toggle="tab" href="#invoices"><i class="fa fa-files-o fa-lg"></i> bla </a></li> -->
+      <li><a data-toggle="tab" href="#single-invoice"><i class="fa fa-file-text-o fa-lg"></i>Update or cancel</a></li>
+      <li><a data-toggle="tab" href="#browse"><i class="fa fa-search fa-lg"></i> Request cancellation</a></li>
+    </ul>
+  </div>
+  <div class="right"> 
+    <div class="tab-content">
+     
+      <!-- Landing -->
+
+
+      <div id="landing" class="tab-pane fade">
+        
+
+
+
+        <div class="header">
+          <h4>{{session.name}}</h4>
+
+            <ul class="pull-right">
+              <li>
+                <div class="btn-group dropleft dropdown-user">
+             
+                    <i class="fa fa-user dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2.2rem;">
+                      <!-- <span class="material-icons">notifi</span> -->
+                      <span class="icon-button__badge">{{counta}}</span>
+                    </i>
+      
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in dataapproved %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-check-circle fa-2x"></i>
+                          <p class="pull-right">
+                            {{row.2}}<br>
+                            <small>{{row.12}}</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="btn-group dropleft dropdown-alert">
+                  <i class="fa fa-bell dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2rem;">
+                    <!-- <span class="material-icons">notifi</span> -->
+                    <span class="icon-button__badge">{{rcount}}</span>
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in datarequest %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <!-- <i class="fa fa-check-circle fa-2x"></i> -->
+                          <p class="pull-righ">
+                            {{row.0}}<br>{{row.2}} {{row.3}}
+                            <small>{{row.4}} Requested cancellation </small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="btn-group dropleft dropdown-avatar">
+                  <img src="static/images/{{session.name}}b.svg" class="img-circle img-responvie" width="30px"/><i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <ul class="dropdown-menu"> 
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">View Activity</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+<style>
+    #blue{
+  background: linear-gradient(90deg, rgba(18,200,193,1) 0%, rgba(11,132,202,1) 100%);
+  }
+  #green{
+  background: linear-gradient(90deg, rgba(37,202,166,1) 0%, rgba(151,202,11,1) 100%);
+  }
+  
+  #pink{
+  background: linear-gradient(138deg, rgb(175, 7, 194) 0%, rgb(9, 88, 184) 100%);
+  }
+  
+  #red{
+  background: linear-gradient(138deg, rgb(102, 2, 10) 0%, rgba(219,5,69,1) 100%);
+  }
+  
+  #pink{
+  background: linear-gradient(138deg, rgb(217, 1, 134) 0%, rgba(246, 0, 74, 0.94) 100%);
+  }
+  
+  #purple{
+  background: linear-gradient(138deg, rgb(168, 0, 198) 0%, rgb(100, 0, 231) 100%);
+  
+  
+  }
+  
+  #orange{
+  background: linear-gradient(138deg, rgb(240, 141, 2) 0%, rgba(219,5,69,1) 100%);
+  }
+  
+  
+</style>
+
+
+
+
+
+
+        <div class="content">
+          <h3 class="text-center">
+            Add events 
+         <br><br>
+        
+         </h3>
+      </div>
+      </div>
+      <!-- Projects -->
+
+      <div id="projects" class="tab-pane fade in active">
+        
+
+        <div class="header">
+          <h4>{{session.name}}</h4>
+
+            <ul class="pull-right">
+              <li>
+                <div class="btn-group dropleft dropdown-user">
+             
+                    <i class="fa fa-user dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2.2rem;">
+                      <!-- <span class="material-icons">notifi</span> -->
+                      <span class="icon-button__badge">{{counta}}</span>
+                    </i>
+      
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in dataapproved %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-check-circle fa-2x"></i>
+                          <p class="pull-right">
+                            {{row.2}}<br>
+                            <small>{{row.12}}</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="btn-group dropleft dropdown-alert">
+                  <i class="fa fa-bell dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2rem;">
+                    <!-- <span class="material-icons">notifi</span> -->
+                    <span class="icon-button__badge">{{rcount}}</span>
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in datarequest %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <!-- <i class="fa fa-check-circle fa-2x"></i> -->
+                          <p class="pull-righ">
+                            {{row.0}}<br>{{row.2}} {{row.3}}
+                            <small>{{row.4}} Requested cancellation </small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="btn-group dropleft dropdown-avatar">
+                  <img src="static/images/{{session.name}}b.svg" class="img-circle img-responvie" width="30px"/><i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <ul class="dropdown-menu"> 
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">View Activity</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        <div class="content">
+          <div class="row">
+            <div class="col-sm-3 " >
+              <div class="card-3">
+                <h3><small>Rejected events</small>
+                <span class="pull-right"><i class="fa fa-arrow-circle-o-up fa-2x"></i></span>
+                  <br>{{curcount}}
+                </h3>
+
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="card-3">
+                <h3><small>Approval pending</small>
+                <span class="pull-right"><i class="fa fa-arrow-circle-o-up fa-2x"></i></span>
+                  <br>{{countp}}
+                </h3>
+      
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="card-3">
+                <h3><small>Approved</small>
+                <span class="pull-right"><i class="fa fa-arrow-circle-o-down fa-2x"></i></span>
+                  <br>{{counta}}
+
+                </h3>
+      
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="card-3">
+                <h3><small>Cancellation Requests</small>
+                <span class="pull-right"><i class="fa fa-arrow-circle-o-down fa-2x"></i></span>
+                  <br>{{rcount}}
+                </h3>
+
+              </div>
+            </div>
+          </div>
+          <div class="">
+            <div class="responsi">
+              <h3>Your events <small> {{curcount}} events</small><i class="fa fa-cloud-download pull-right"></i></h3>
+              
+              
+
+              <table style="width:100%">
+    
+                {% for row in students %}
+                <tr>
+                  
+                  <td>
+                    <!-- banner -->
+                    <div class="eventWrapper">
+                      
+            
+                      <div class="event" id="banner">
+                        
+                        <div class="event--date"><span></span>{{row.6}}  {{row.9}}<span style="background-color:rgba(0, 0, 255, 0)255, 255, 255); font-weight: 700; padding-top: 20px;">{{row.4}}</span><span></span>{{row.7}}<span>{{row.6}}</span></div>
+                        <div class="event--content">
+                          
+                          <p class="status"><IMG src="static/images/{{row.12}}c.svg" style="height:20px; margin-right: 10px;">{{row.12}}</p>
+                        
+                          
+                          <h1 class="event-title">{{row.2}}</h1>
+                     
+                          <style>
+                            #banner{
+                              background-color: rgb(242, 242, 242);
+                              color: black;
+                              font-weight: 800;
+                              
+                            }
+                          </style>
+                          
+                        </div>	
+            
+                      </div>
+                    </div>
+            
+                  </td>
+        
+                </tr>
+
+                
+  
+ 
+                {% endfor %}
+            
+                
+              </table>
+            
+
+              
+      
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <!-- User Profile -->
+      <div id="user-profile" class="tab-pane fade" >
+        <div class="header">
+          <h4>{{session.name}}</h4>
+
+            <ul class="pull-right">
+              <li>
+                <div class="btn-group dropleft dropdown-user">
+             
+                    <i class="fa fa-user dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2.2rem;">
+                      <!-- <span class="material-icons">notifi</span> -->
+                      <span class="icon-button__badge">{{counta}}</span>
+                    </i>
+      
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in dataapproved %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-check-circle fa-2x"></i>
+                          <p class="pull-right">
+                            {{row.2}}<br>
+                            <small>{{row.12}}</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="btn-group dropleft dropdown-alert">
+                  <i class="fa fa-bell dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2rem;">
+                    <!-- <span class="material-icons">notifi</span> -->
+                    <span class="icon-button__badge">{{rcount}}</span>
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in datarequest %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <!-- <i class="fa fa-check-circle fa-2x"></i> -->
+                          <p class="pull-righ">
+                            {{row.0}}<br>{{row.2}} {{row.3}}
+                            <small>{{row.4}} Requested cancellation </small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="btn-group dropleft dropdown-avatar">
+                  <img src="static/images/{{session.name}}b.svg" class="img-circle img-responvie" width="30px"/><i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <ul class="dropdown-menu"> 
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">View Activity</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        <div class="content">
+          <div class="row">
+            
+            hereeeee
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- Candidates -->
+      <div id="candidates" class="tab-pane fade">
+        <div class="header">
+          <h4>{{session.name}}</h4>
+
+            <ul class="pull-right">
+              <li>
+                <div class="btn-group dropleft dropdown-user">
+             
+                    <i class="fa fa-user dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2.2rem;">
+                      <!-- <span class="material-icons">notifi</span> -->
+                      <span class="icon-button__badge">{{counta}}</span>
+                    </i>
+      
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in dataapproved %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-check-circle fa-2x"></i>
+                          <p class="pull-right">
+                            {{row.2}}<br>
+                            <small>{{row.12}}</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="btn-group dropleft dropdown-alert">
+                  <i class="fa fa-bell dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2rem;">
+                    <!-- <span class="material-icons">notifi</span> -->
+                    <span class="icon-button__badge">{{rcount}}</span>
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in datarequest %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <!-- <i class="fa fa-check-circle fa-2x"></i> -->
+                          <p class="pull-righ">
+                            {{row.0}}<br>{{row.2}} {{row.3}}
+                            <small>{{row.4}} Requested cancellation </small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="btn-group dropleft dropdown-avatar">
+                  <img src="static/images/{{session.name}}b.svg" class="img-circle img-responvie" width="30px"/><i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <ul class="dropdown-menu"> 
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">View Activity</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+        <div class="content">
+          <div class="row">
+            <div class="col-sm-4 candid-card">
+              <div class="card-4">
+                <img src="https://bit.ly/2Z2Rhol" class="img-responsive main-img"/>
+                <div class="row">
+                  <div class="col-sm-10">
+                    <img src="https://bit.ly/2OWjYOV" class="img-responsive img-circle img-thumbnail pull-left">
+                    <h5>Mathilda Campbell <br><small><i class="fa fa-map-marker"></i> India</small></h5>
+                  </div>
+                  <div class="col-sm-2 text-right">
+                    <a href="#"><i class="fa fa-trash-o fa-lg"></i></a>
+                    <a href="#"><i class="fa fa-cog fa-lg"></i></a>
+                  </div>
+                </div>
+                <hr>
+                <div class="row text-center py-15">
+                  <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block"><i class="fa fa-envelope"></i> New Message</button>
+                  </div>
+                  <div class="col-sm-6 text-green">
+                    <small class="mt-5"><i class="fa fa-check"></i> Available for Hire</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 candid-card">
+              <div class="card-4">
+                <img src="https://bit.ly/2TCl1lG" class="img-responsive main-img"/>
+                <div class="row">
+                  <div class="col-sm-10">
+                    <img src="https://bit.ly/2Z9sZUH" class="img-responsive img-circle img-thumbnail pull-left">
+                    <h5>Mathilda Campbell <br><small><i class="fa fa-map-marker"></i> India</small></h5>
+                  </div>
+                  <div class="col-sm-2 text-right">
+                    <a href="#"><i class="fa fa-trash-o fa-lg"></i></a>
+                    <a href="#"><i class="fa fa-cog fa-lg"></i></a>
+                  </div>
+                </div>
+                <hr>
+                <div class="row text-center py-15">
+                  <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block"><i class="fa fa-envelope"></i> New Message</button>
+                  </div>
+                  <div class="col-sm-6 text-green">
+                    <small class="mt-5"><i class="fa fa-check"></i> Available for Hire</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 candid-card">
+              <div class="card-4">
+                <img src="https://bit.ly/2Z6stLb" class="img-responsive main-img"/>
+                <div class="row">
+                  <div class="col-sm-10">
+                    <img src="https://bit.ly/2Z4W1cd" class="img-responsive img-circle img-thumbnail pull-left">
+                    <h5>Mathilda Campbell <br><small><i class="fa fa-map-marker"></i> India</small></h5>
+                  </div>
+                  <div class="col-sm-2 text-right">
+                    <a href="#"><i class="fa fa-trash-o fa-lg"></i></a>
+                    <a href="#"><i class="fa fa-cog fa-lg"></i></a>
+                  </div>
+                </div>
+                <hr>
+                <div class="row text-center py-15">
+                  <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block"><i class="fa fa-envelope"></i> New Message</button>
+                  </div>
+                  <div class="col-sm-6 text-green">
+                    <small class="mt-5"><i class="fa fa-check"></i> Available for Hire</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4 candid-card">
+              <div class="card-4">
+                <img src="https://bit.ly/30evAhw" class="img-responsive main-img"/>
+                <div class="row">
+                  <div class="col-sm-10">
+                    <img src="https://bit.ly/2KP3DX7" class="img-responsive img-circle img-thumbnail pull-left">
+                    <h5>Mathilda Campbell <br><small><i class="fa fa-map-marker"></i> India</small></h5>
+                  </div>
+                  <div class="col-sm-2 text-right">
+                    <a href="#"><i class="fa fa-trash-o fa-lg"></i></a>
+                    <a href="#"><i class="fa fa-cog fa-lg"></i></a>
+                  </div>
+                </div>
+                <hr>
+                <div class="row text-center py-15">
+                  <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block"><i class="fa fa-envelope"></i> New Message</button>
+                  </div>
+                  <div class="col-sm-6 text-green">
+                    <small class="mt-5"><i class="fa fa-check"></i> Available for Hire</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 candid-card">
+              <div class="card-4">
+                <img src="https://bit.ly/2KQ3se3" class="img-responsive main-img"/>
+                <div class="row">
+                  <div class="col-sm-10">
+                    <img src="https://bit.ly/2ZjhWMZ" class="img-responsive img-circle img-thumbnail pull-left">
+                    <h5>Mathilda Campbell <br><small><i class="fa fa-map-marker"></i> India</small></h5>
+                  </div>
+                  <div class="col-sm-2 text-right">
+                    <a href="#"><i class="fa fa-trash-o fa-lg"></i></a>
+                    <a href="#"><i class="fa fa-cog fa-lg"></i></a>
+                  </div>
+                </div>
+                <hr>
+                <div class="row text-center py-15">
+                  <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block"><i class="fa fa-envelope"></i> New Message</button>
+                  </div>
+                  <div class="col-sm-6 text-green">
+                    <small class="mt-5"><i class="fa fa-check"></i> Available for Hire</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 candid-card">
+              <div class="card-4">
+                <img src="https://bit.ly/33JBVUr" class="img-responsive main-img"/>
+                <div class="row">
+                  <div class="col-sm-10">
+                    <img src="https://bit.ly/2YSiUjI" class="img-responsive img-circle img-thumbnail pull-left">
+                    <h5>Mathilda Campbell <br><small><i class="fa fa-map-marker"></i> India</small></h5>
+                  </div>
+                  <div class="col-sm-2 text-right">
+                    <a href="#"><i class="fa fa-trash-o fa-lg"></i></a>
+                    <a href="#"><i class="fa fa-cog fa-lg"></i></a>
+                  </div>
+                </div>
+                <hr>
+                <div class="row text-center py-15">
+                  <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block"><i class="fa fa-envelope"></i> New Message</button>
+                  </div>
+                  <div class="col-sm-6 text-green">
+                    <small class="mt-5"><i class="fa fa-check"></i> Available for Hire</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Invoices -->
+      <div id="invoices" class="tab-pane fade">
+        <div class="header">
+          <h4>{{session.name}}</h4>
+
+            <ul class="pull-right">
+              <li>
+                <div class="btn-group dropleft dropdown-user">
+             
+                    <i class="fa fa-user dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2.2rem;">
+                      <!-- <span class="material-icons">notifi</span> -->
+                      <span class="icon-button__badge">{{counta}}</span>
+                    </i>
+      
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in dataapproved %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-check-circle fa-2x"></i>
+                          <p class="pull-right">
+                            {{row.2}}<br>
+                            <small>{{row.12}}</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="btn-group dropleft dropdown-alert">
+                  <i class="fa fa-bell dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2rem;">
+                    <!-- <span class="material-icons">notifi</span> -->
+                    <span class="icon-button__badge">{{rcount}}</span>
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in datarequest %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <!-- <i class="fa fa-check-circle fa-2x"></i> -->
+                          <p class="pull-righ">
+                            {{row.0}}<br>{{row.2}} {{row.3}}
+                            <small>{{row.4}} Requested cancellation </small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="btn-group dropleft dropdown-avatar">
+                  <img src="static/images/{{session.name}}b.svg" class="img-circle img-responvie" width="30px"/><i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <ul class="dropdown-menu"> 
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">View Activity</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+
+        <div class="content">
+          
+          <div class="row table-invoice">
+            <div class="col-sm-12">
+              <div class="table-in-card">
+                <h3>Invoices</h3>
+                <hr>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>No.</th>
+                      <th>Invoice Subject</th>
+                      <th>Client</th>
+                      <th>VAT No.</th>
+                      <th>Created</th>
+                      <th>Status</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>00450</td>
+                      <td>Design Works</td>
+                      <td>Carlson Limited</td>
+                      <td>87956621</td>
+                      <td>15 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-success btn-xs"><small>PAID</small></button>
+                      </td>
+                      <td>$887</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>00450</td>
+                      <td>UX Wireframes</td>
+                      <td>Adobe</td>
+                      <td>87956621</td>
+                      <td>12 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-warning btn-xs"><small>PENDING</small></button>
+                      </td>
+                      <td>$1200</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>00452</td>
+                      <td>New Dashboard</td>
+                      <td>Bluewolf</td>
+                      <td>87956621</td>
+                      <td>15 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-warning btn-xs"><small>PENDING</small></button>
+                      </td>
+                      <td>$534</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>00453</td>
+                      <td>Landing Page</td>
+                      <td>Salesforce</td>
+                      <td>87956621</td>
+                      <td>12 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-grayblue btn-xs"><small class="large">DUE IN 2 WEEKS</small></button>
+                      </td>
+                      <td>$1500</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>00454</td>
+                      <td>Marketing Templates	</td>
+                      <td>Printic</td>
+                      <td>87956621</td>
+                      <td>15 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-danger btn-xs"><small>PAID TODAY</small></button>
+                      </td>
+                      <td>$887</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>00450</td>
+                      <td>UX Wireframes</td>
+                      <td>Adobe</td>
+                      <td>87956621</td>
+                      <td>12 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-warning btn-xs"><small>PENDING</small></button>
+                      </td>
+                      <td>$1200</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>00450</td>
+                      <td>Design Works</td>
+                      <td>Carlson Limited</td>
+                      <td>87956621</td>
+                      <td>15 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-success btn-xs"><small>PAID</small></button>
+                      </td>
+                      <td>$887</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>00450</td>
+                      <td>UX Wireframes</td>
+                      <td>Adobe</td>
+                      <td>87956621</td>
+                      <td>12 Aug 2019</td>
+                      <td>
+                        <button class="btn btn-warning btn-xs"><small>PENDING</small></button>
+                      </td>
+                      <td>$1200</td>
+                      <td>
+                        <button class="btn btn-primary"><small>MANAGE</small></button>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default">Actions</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Complete</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Share</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Archieve</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td><a href="#"><i class="fa fa-cloud-download fa-lg"></i></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Single Invoice -->
+      <div id="single-invoice" class="tab-pane fade">
+        <div class="header">
+          <h4>{{session.name}}</h4>
+
+            <ul class="pull-right">
+              <li>
+                <div class="btn-group dropleft dropdown-user">
+             
+                    <i class="fa fa-user dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2.2rem;">
+                      <!-- <span class="material-icons">notifi</span> -->
+                      <span class="icon-button__badge">{{counta}}</span>
+                    </i>
+      
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in dataapproved %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-check-circle fa-2x"></i>
+                          <p class="pull-right">
+                            {{row.2}}<br>
+                            <small>{{row.12}}</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="btn-group dropleft dropdown-alert">
+                  <i class="fa fa-bell dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2rem;">
+                    <!-- <span class="material-icons">notifi</span> -->
+                    <span class="icon-button__badge">{{rcount}}</span>
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in datarequest %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <!-- <i class="fa fa-check-circle fa-2x"></i> -->
+                          <p class="pull-righ">
+                            {{row.0}}<br>{{row.2}} {{row.3}}
+                            <small>{{row.4}} Requested cancellation </small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="btn-group dropleft dropdown-avatar">
+                  <img src="static/images/{{session.name}}b.svg" class="img-circle img-responvie" width="30px"/><i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <ul class="dropdown-menu"> 
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">View Activity</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+
+
+        <div class="content">
+          <div class="container">
+            
+
+           
+                 <table style="width:100%">
+                    {% for row in students %}
+                    <tr>
+                       <td>
+                          <!-- banner -->
+                          <div class="eventWrapper">
+                             <div class="event" id="banner">
+                                <div class="event--date"><span></span>{{row.6}}  {{row.9}}<span style="background-color:rgba(0, 0, 255, 0)255, 255, 255); font-weight: 700; padding-top: 20px;">{{row.4}}</span><span></span>{{row.7}}<span>{{row.6}}</span></div>
+                                <div class="event--content">
+                                   <p class="status"><IMG src="static/images/{{row.12}}c.svg" style="height:20px; margin-right: 10px;">{{row.12}}</p>
+                                   <h1 class="event-title">{{row.2}}</h1>
+                                   <style>
+                                      #banner{
+                                      background-color: rgb(242, 242, 242);
+                                      color: black;
+                                      font-weight: 800;
+                                      }
+                                   </style>
+                                   <div style="display:flex;">
+
+                                   
+                                    <a href="/update/{{row.0}}" class="editbtn" data-toggle="modal" data-target="#modaledit{{row.0}}">Edit</a>&nbsp;
+                                    
+                                    <a href="/delete/{{ row.0 }}" class="dltbtn" onclick="return confirm('Are You Sure For Delete?')">Delete</a>
+                                  </div>
+                                
+                                  </div>
+                                
+                             </div>
+                          </div>
+                          
+                       </td>
+                       <style>
+                        .editbtn{
+                          background-color: rgb(6, 139, 216);
+                          padding: 10px;
+                          width: 50px;
+                          color: white;
+                          font-size: 15px;
+                          text-align: center;
+                          border-radius: 15px;
+                        }
+
+                        .dltbtn{
+                          background-color: rgb(216, 17, 6);
+                          padding: 5px;
+                          width: 70px;
+                          color: white;
+                          font-size: 15px;
+                          text-align: center;
+                          border-radius: 15px;
+                        }
+                       </style>
+                       <!-- <td>
+
+                        
+                         
+                          <a href="/delete/{{ row.0 }}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure For Delete?')">Delete</a>
+                       </td> -->
+                    </tr>
+                    <div id="modaledit{{row.0}}" class="modal fade" role="dialog">
+                       <div class="modal-dialog">
+                          <div class="modal-content">
+                             <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Update Information</h4>
+                             </div>
+                             <div class="modal-body">
+                                <form action="{{ url_for('update') }}" method="POST">
+                                   <div class="form-group">
+                                      <label>Name:</label>
+                                      <input type="hidden"  name="id" value="{{row.0}}">
+                                      <input type="text" class="form-control" name="name" value="{{row.2}}">
+                                   </div>
+                                   <div class="form-group">
+                                      <label>time:</label>
+                                      <input type="text" class="form-control" name="time" value="{{row.8}}">
+                                   </div>
+                                   <div class="form-group">
+                                      <label>venue:</label>
+                                      <input type="text" class="form-control" name="venue" value="{{row.9}}">
+                                   </div>
+                                   <div class="form-group">
+                                      <label>speaker:</label>
+                                      <input type="text" class="form-control" name="speaker" value="{{row.10}}">
+                                   </div>
+                                   <div class="form-group">
+                                      <label>status:</label>
+                                      <input type="text" class="form-control" name="status" value="{{row.12}}" readonly>
+                                   </div>
+                                   <div class="form-group">
+                                      <button class="btn btn-primary" type="sbumit" onclick="alertfn()">Update</button>
+                                   </div>
+                                </form>
+                             </div>
+                             <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                    {% endfor %}
+                 </table>
+         
+          </div>
+        </div>
+      </div>
+      <!-- Browse -->
+      <div id="browse" class="tab-pane fade">
+        
+
+        <div class="header">
+          <h4>{{session.name}}</h4>
+
+            <ul class="pull-right">
+              <li>
+                <div class="btn-group dropleft dropdown-user">
+             
+                    <i class="fa fa-user dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2.2rem;">
+                      <!-- <span class="material-icons">notifi</span> -->
+                      <span class="icon-button__badge">{{counta}}</span>
+                    </i>
+      
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in dataapproved %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <i class="fa fa-check-circle fa-2x"></i>
+                          <p class="pull-right">
+                            {{row.2}}<br>
+                            <small>{{row.12}}</small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="btn-group dropleft dropdown-alert">
+                  <i class="fa fa-bell dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" style="font-size:2rem;">
+                    <!-- <span class="material-icons">notifi</span> -->
+                    <span class="icon-button__badge">{{rcount}}</span>
+                  </i>
+                  <ul class="dropdown-menu"> 
+                    {% for row in datarequest %}
+                    <li>
+                      <a href="#">
+                        <div class="alert-card">
+                          <!-- <i class="fa fa-check-circle fa-2x"></i> -->
+                          <p class="pull-righ">
+                            {{row.0}}<br>{{row.2}} {{row.3}}
+                            <small>{{row.4}} Requested cancellation </small>
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor  %}
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="btn-group dropleft dropdown-avatar">
+                  <img src="static/images/{{session.name}}b.svg" class="img-circle img-responvie" width="30px"/><i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <ul class="dropdown-menu"> 
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">View Activity</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        
+
+<div class="container">
+
+  <div class="well text-center">
+
+      <h1>Request cancellation</h1>
+
+      <div>
+          
+      </div>
+
+
+  </div>
+
+<div class="container">
+
+  <div class="row">
+
+      <div class="col md-12">
+
+
+
+          <!-- <h2>Student List <button type="button" class="btn btn-success  pull-right" data-toggle="modal" data-target="#myModal">Add Student Data</button></h2> -->
+
+
+
+
+
+
+
+
+          <table class="table table-striped">
+
+
+              <tr>
+            <!-- <th>Serial</th> -->
+            <th>club</th>
+            <th>Name</th>
+            <th>date</th>
+            <th>time</th>
+            <th>end time</th>
+            <th>venue</th>
+           
+     
+            <th>Action</th>
+
+
+        </tr>
+
+
+
+
+
+              {% for row in requestcancellation %}
+              <tr>
+                  <!-- <td>{{row.0}}</td> -->
+                  <td>{{row.1}}</td>
+                  <td>{{row.2}}</td>
+                  <td>{{row.3}}</td>
+                  <td>{{row.8}}</td>
+                  <td>{{row.13}}</td>
+                  <td>{{row.9}}</td>
+             
+               
+                  <td>
+
+
+             <a href="/updatests/{{row.0}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit1{{row.0}}">Request cancelaation</a>
+              <!-- <a href="/delete/{{ row.0 }}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure For Delete?')">Delete</a> -->
+
+                  </td>
+
+              </tr>
+
+              <div id="modaledit1{{row.0}}" class="modal fade" role="dialog">
+
+
+
+
+                  
+ <div class="modal-dialog">
+
+
+    <div class="modal-content">
+
+
+       <div class="modal-header">
+
+
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+
+          <h4 class="modal-title">Request</h4>
+
+
+       </div>
+
+
+       <div class="modal-body">
+
+
+          <form action="{{ url_for('updatests') }}" method="POST">
+
+
+
+            <div class="form-group">
+
+
+              <label>club:</label>
+               <input type="hidden"  name="id" value="{{row.0}}">
+
+              <input type="text" class="form-control" name="clubcancel" value="{{row.1}}">
+
+
+           </div>
+
+             <div class="form-group">
+
+
+                <label>Name:</label>
+                 <input type="hidden"  name="id" value="{{row.0}}">
+
+                <input type="text" class="form-control" name="namecancel" value="{{row.2}}">
+
+
+             </div>
+
+             <div class="form-group">
+
+
+                <label>time:</label>
+
+                <input type="text" class="form-control" name="timecancel" value="{{row.8}}">
+
+
+             </div>
+
+
+
+             <div class="form-group">
+
+
+              <label>date:</label>
+
+              <input type="text" class="form-control" name="datecancel" value="{{row.3}}">
+
+
+           </div>
+
+           <div class="form-group">
+
+
+            <label>requestedby:</label>
+
+            <input type="text" class="form-control" name="requestedby" value="{{session.name}}">
+
+
+         </div>
+
+
+
+             <div class="form-group">
+
+
+                <button class="btn btn-primary" type="sbumit">Request</button>
+
+
+             </div>
+
+
+          </form>
+
+
+       </div>
+
+
+       <div class="modal-footer">
+
+
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+
+       </div>
+
+
+    </div>
+
+
+ </div>
+
+
+</div>
+
+
+              {% endfor  %}
+
+
+              </tbody>
+
+
+          </table>
+
+
+      </div>
+
+
+<!-- Modal -->
+
+
+<div id="myModal" class="modal fade" role="dialog">
+
+
+ <div class="modal-dialog">
+
+
+    <div class="modal-content">
+
+
+       <div class="modal-header">
+
+
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+
+          <h4 class="modal-title">Please Insert Data</h4>
+
+
+       </div>
+
+
+     
+
+       <div class="modal-footer">
+
+
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+
+       </div>
+
+
+    </div>
+
+
+ </div>
+
+
+
+<script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+
+<script type="text/javascript" src="{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
+
+ <style>
+  html {
+overflow: scroll;
+overflow-x: hidden;
+}
+::-webkit-scrollbar {
+width: 0;
+background: transparent; 
+}
+
+
+ </style>
+
+        <div class="content">
+          <div class="container browse">
+            <div class="row">
+              <div class="col-sm-4">
+
+              </div> 
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+SELECT events.*, requests.* FROM events, requests WHERE requests.name = events.name;

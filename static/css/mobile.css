@@ -1,0 +1,106 @@
+@media only screen and (max-width: 600px) 
+{
+
+    .home-title
+    {
+        
+
+        margin-top: 8rem;
+    
+    }
+
+
+    .homebtn
+    {
+        display: none;
+    } 
+    .outer1
+    {
+        display: block;
+    }
+
+    .cancelbtn
+    {
+        margin-left: 3rem;
+    }
+
+    .menu{
+        margin-left: 0px;
+        /* background-color: aquamarine; */
+        gap: 20px;
+    }
+
+    .logo-div {
+        padding: 2rem;
+        /* background-color: blue; */
+    }
+    .inner1{
+        width: 75%;
+    }
+
+    
+}
+
+
+
+
+
+ @media only screen and (min-width: 992px)
+{ 
+
+    
+    .menu{
+        margin-left: 450px;
+    }
+
+
+    .logo-div{
+        padding-left: 320px;
+        padding-top: 40px;
+    } 
+
+
+    .hometitle {
+        
+        margin-left: 270px;
+        
+      }
+
+      .cancelbtn
+      {
+          margin-left: 310px;
+          margin-top: 0;
+      }
+
+      /* .nav
+      {
+        padding-top: 20px;
+        padding-right:300px;
+        padding-left: 300px;
+      }
+
+      .menu-top{
+    }
+
+    .menu{
+        display: flex;
+        align-items: center;
+     
+    }
+   
+    .menu-top{
+        display: flex;
+        align-items: center;
+        height: 60px;
+    } */
+
+    .btncalhome{
+     
+        padding-left: 270px;
+    }
+
+    .sidenav{
+        display: none;
+    }
+    
+}

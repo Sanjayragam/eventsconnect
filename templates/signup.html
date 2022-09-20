@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1"> 
+      <meta charset="UTF-8">
+  <title>Login</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="main-wrapper">
+  <div class="text-content">
+  
+    <h1 class="heading-primar">sign up<span class="span-blue">.</span></h1>
+    {% if mesage is defined and mesage %}
+    <div class="alert alert-warning">{{ mesage }}</div>
+    {% endif %}
+    <p class="text">to eventsconnect</p>
+    <p class="credentials">Create your account.</p><br>
+
+        <form class="login_form" action="{{ url_for('register') }}" method="post">
+          
+          <input class="inputlogin" type="text" name="name" placeholder="name"  ><br>
+          <script>
+            var field = document.querySelector('[name="name"]');
+
+                field.addEventListener('keypress', function ( event ) {  
+                  var key = event.keyCode;
+                    if (key === 32) {
+                      event.preventDefault();
+                    }
+                });
+          </script>
+          <input class="inputlogin" type="email" name="email" placeholder="email"  ><br>
+		  <input class="inputlogin" type="password" name="password" placeholder="pwd"  ><br>
+
+          <input type="submit" class="loginbutton" name="login" value="Sign up">
+          <p class="signuplink">have an account? <a href="{{ url_for('loginpage') }}">Login here</p>
+
+
+
+        </form>
+
+
+        </div>
+   
+
+  <div data-slide="slide" class="slide">
+    <div class="slide-items">
+
+      <img src="static/images/story1.jpg" >
+      <img src="static/images/story1.jpg">
+      <img src="static/images/story1.jpg">
+
+    </div>
+
+    <nav class="slide-nav">
+      <div class="slide-thumb"></div>
+      <button class="slide-prev">Previous</button>
+      <button class="slide-next">Next</button>
+    </nav>
+
+  </div>
+</div>
+
+<script src="{{url_for('static', filename='login.js')}}"></script>
+
+<style>
+  /* mobile view */
+@media only screen and (max-width: 700px) {
+html {
+font-size: 54.5%;
+}
+.signuplink{
+    margin-top: 1rem;
+    font-size:larger;
+  }
+
+  .heading-primar{
+    font-size: xx-large;
+  }
+
+}
+
+</style>
+</body>
+</html>
+
+

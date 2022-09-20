@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>{{session.name}} </title>
+  <link rel='stylesheet' href='static/css/calendar.css'> 
+  <link rel='stylesheet' href='static/css/calendar1.css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'>
+  <link rel="stylesheet" href="static/css/test.css">
+
+</head>
+<body>
+
+  
+<div class="profilecont">
+  <header>
+    <div class="home">
+      <i class="fas fa-home"></i>
+    </div>
+    <ul class="menu">
+      <li>
+        <a href="#">Home</a>
+      </li>
+      <li>
+        <a href="#">Forum</a>
+      </li>
+      <li>
+        <a href="#">Downloads</a>
+      </li>
+      <li>
+        <a href="#">Contact</a>
+      </li>
+      <li>
+        <a href="#">Login / Register</a>
+      </li>
+    </ul>
+  </header>
+  <div class="banner">
+    <div class="ava">
+      <img src="https://eu.ui-avatars.com/api/?background=0D8ABC&color=fff&name=John+Doe&size=100" alt="ava" />
+    </div>
+    <h4>{{session.name}}<span><a href="{{ url_for('logout') }}"> Logout</a></span></h4>
+    <div class="btns">
+      <div class="btn addusr">
+        <i class="fas fa-user-plus"></i>
+        <span><a class="bottom" href="{{url_for('register')}}"> Register here</a></span>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="main">
+      <h5>Recent posts</h5>
+      <ul class="posts">
+        {% for item in data %}
+        <li class="general">
+          <a href="#">
+            <div class="icon">
+              <i class="fas fa-grin-tongue-wink"></i>
+            </div>
+            <div class="txt">
+              <h5>{{item.name}} </h5>
+              <div class="sub">
+                <strong>General</strong>
+                <span>&nbsp;-&nbsp;</span>
+                <span>2nd November 2021, 2 minutes ago</span>
+                <span>&nbsp;-&nbsp;</span>
+                <span>
+                  <i class="fas fa-comments"></i>
+                  &nbsp;3 Replies
+                </span>
+                
+                
+              </div>
+            </div>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="side">
+      <h5>Bio</h5>
+      <p>No information given.</p>
+      <h5>Achievments - (0)</h5>
+      <p></p>
+      <h5>Socials</h5>
+      <p>Private</p>
+    </div>
+  </div>
+</div>
+  
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+  #myDIV1 {
+  width: 100%;
+  padding: 50px 0;
+  display: none;
+  text-align: center;
+  background-color: rgb(8, 138, 182);
+  margin-top: 20px;
+
+
+}
+
+
+#myDIV2 {
+  width: 100%;
+  padding: 50px 0;
+  text-align: center;
+  background-color: rgb(45, 200, 18);
+  margin-top: 20px;
+
+}
+</style>
+</head>
+<body>
+
+
+
+
+    <div id="myDIV1">
+      <button onclick="hideshow2()">Try it</button>
+    first 
+    </div>
+
+
+      <div id="myDIV2">
+        <button onclick="hideshow1()">Try it</button>
+      second 
+    </div>
+
+
+
+<script>
+function hideshow1() {
+  
+  var x = document.getElementById("myDIV1");
+  if (x.style.display = "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+
+  var y = document.getElementById("myDIV2");
+  y.style.display = "none"
+
+}
+
+
+
+function hideshow2() {
+  
+  var x = document.getElementById("myDIV2");
+  if (x.style.display = "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+
+  var y = document.getElementById("myDIV1");
+  y.style.display = "none"
+}
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
+
+ -->
